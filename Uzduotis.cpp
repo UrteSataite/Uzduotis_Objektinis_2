@@ -5,18 +5,18 @@
 #include <iomanip>
 #include <algorithm>
 
-
 double gal_rez(int egr, std::vector<double> nd_rez);
 double gal_mediana(int egr, std::vector<double> nd_rez);
 void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai);
 
 int main()
 {
-    char mv;
     int sk, ndr_sk, egr, tmp;
     double galutinis1, galutinis2;
 
     std::string vardas, pavarde;
+    
+    char mv;
 
     std::vector<double> nd_rez;
     std::vector<std::string> vardai;
@@ -27,9 +27,11 @@ int main()
     std::cout << "Iveskite studentu skaiciu: \n";
     std::cin >> sk;
     
+    /* 
     std::cout << "Iveskite namu darbu rezultatu skaiciu: \n";
-    std::cin >> ndr_sk;
-
+    std::cin >> ndr_sk; 
+    */
+   
     for (int i = 0; i < sk; i++) {
         
         std::cout << "Iveskite studento varda: \n";
@@ -40,12 +42,22 @@ int main()
         std::cin >> pavarde;
         pavardes.push_back(pavarde);
 
-        std::cout << "Iveskite namu darbu rezultatus \n";
-        for (int i = 0; i < ndr_sk; i++) {
+       // std::cout << "Iveskite namu darbu rezultatus \n";
+
+        while (true) {
+
+            std::cout << "Iveskite namu darbu rezultatus \n";
 
             std::cin >> tmp;
             nd_rez.push_back(tmp);
 
+            std::cout << "Ar jau ivesti visi rezulatatai (T/N)? \n";
+            std::string tn;    
+            std::cin >> tn;
+
+            if (tn == "T") {
+                break;
+            }
         }
 
         std::cout << "Iveskite egzamino rezultata: \n";
