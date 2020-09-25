@@ -86,14 +86,19 @@ int main()
                         while (true) {
                             std::cout << "Iveskite namu darbu rezultatus \n";
                             std::cin >> tmp;
-                            nd_rez.push_back(tmp);
+                            if (tmp > 0 && tmp <=10 ) 
+                            {
+                                nd_rez.push_back(tmp);
+                                std::cout << "Ar jau ivesti visi rezulatatai (T/N)? \n";
+                                std::string tn;
+                                std::cin >> tn;
 
-                            std::cout << "Ar jau ivesti visi rezulatatai (T/N)? \n";
-                            std::string tn;
-                            std::cin >> tn;
-
-                            if (tn == "T") {
-                                break;
+                                if (tn == "T") {
+                                    break;
+                                }
+                            }
+                            else {
+                                std::cout << "Klaida: rezultatas turi buti pateiktas 10-baleje sistemoje.\n";
                             }
                         }
                     }
@@ -116,6 +121,10 @@ int main()
                     {
                         std::cout << "Iveskite egzamino rezultata: \n";
                         std::cin >> egr;
+                        if (egr < 0 || egr > 11)
+                        {
+                            std::cout << "Klaida: rezultatas turi buti pateiktas 10-baleje sistemoje.\n";
+                        }
                     }
                     else
                     {
