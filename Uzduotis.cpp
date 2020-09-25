@@ -1,9 +1,18 @@
+/* 
+DOKUMENTACIJA 
+v0.1 uzduotis, realizuota naudojant std::vector tipo konteineri. 
+*/
 
 #include <iostream>
 #include <vector>
 #include <numeric>
 #include <iomanip>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <cctype>
+#include <iostream>
+#include <cstring>
 
 double gal_rez(int egr, std::vector<double> nd_rez);
 double gal_mediana(int egr, std::vector<double> nd_rez);
@@ -11,7 +20,7 @@ void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes
 
 int main()
 {
-    int sk, ndr_sk, egr, tmp;
+    int sk, ndr_sk, egr, tmp, tmp2;
     double galutinis1, galutinis2;
 
     std::string vardas, pavarde;
@@ -26,65 +35,125 @@ int main()
 
     std::cout << "Iveskite studentu skaiciu: \n";
     std::cin >> sk;
-    
-    /* 
-    std::cout << "Iveskite namu darbu rezultatu skaiciu: \n";
-    std::cin >> ndr_sk; 
-    */
-   
-    for (int i = 0; i < sk; i++) {
-        
-        std::cout << "Iveskite studento varda: \n";
-        std::cin >> vardas;
-        vardai.push_back(vardas);
 
-        std::cout << "Iveskite studento pavarde: \n";
-        std::cin >> pavarde;
-        pavardes.push_back(pavarde);
+    if (sk > 0)
+    {
+        for (int i = 0; i < sk; i++) {
 
-       // std::cout << "Iveskite namu darbu rezultatus \n";
-
-        while (true) {
-
-            std::cout << "Iveskite namu darbu rezultatus \n";
-
-            std::cin >> tmp;
-            nd_rez.push_back(tmp);
-
-            std::cout << "Ar jau ivesti visi rezulatatai (T/N)? \n";
-            std::string tn;    
-            std::cin >> tn;
-
-            if (tn == "T") {
-                break;
+            std::cout << "Iveskite studento varda: \n";
+            std::cin >> vardas;
+            if (std::isdigit(vardas[i]))
+            {
+                std::cout << "Klaida: vardas negali buti skaicius\n";
             }
-        }
+            else {
+                vardai.push_back(vardas);
 
-        std::cout << "Iveskite egzamino rezultata: \n";
-        std::cin >> egr;
+                std::cout << "Iveskite studento pavarde: \n";
+                std::cin >> pavarde;
+                if (std::isdigit(pavarde[i]))
+                {
+                    std::cout << "Klaida: pavarde negali buti skaicius \n";
+                }
+                else
+                {
+                    pavardes.push_back(pavarde);
 
-        galutinis1 = gal_rez(egr, nd_rez);
-        galutiniai.push_back(galutinis1);
+                    std::cout << "Ar balus sugeneruoti automatiskai? (T/N) \n";
+                    std::string ats;
+                    std::cin >> ats;
 
-        galutinis2 = gal_mediana(egr, nd_rez);
-        galutiniai2.push_back(galutinis2);
+                    if (ats == "T") {
 
+                        while (true) {
+
+                            int max = 10;
+                            srand(time(0));
+                            tmp = rand() % max;
+                            nd_rez.push_back(tmp);
+
+                            std::cout << "Ar jau ivesti visi rezulatatai (T/N)? \n";
+                            std::string tn;
+                            std::cin >> tn;
+
+                            if (tn == "T") {
+                            break;
+                            }
+                        }
+                    }
+                    else if (ats == "N") {
+
+                        while (true) {
+                            std::cout << "Iveskite namu darbu rezultatus \n";
+                            std::cin >> tmp;
+                            nd_rez.push_back(tmp);
+
+                            std::cout << "Ar jau ivesti visi rezulatatai (T/N)? \n";
+                            std::string tn;
+                            std::cin >> tn;
+
+                            if (tn == "T") {
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        std::cout << "Klaida: reikia pasirinkti T arba N";
+                    }
+
+                    std::cout << "Ar egzamino bala sugeneruoti automatiskai? (T/N) \n";
+                    std::string ats2;
+                    std::cin >> ats2;
+
+                    if (ats2 == "T") 
+                    {
+                            int max = 10;
+                            srand(time(0));
+                            egr = rand()%max;
+                    }
+                    else if (ats == "N") 
+                    {
+                        std::cout << "Iveskite egzamino rezultata: \n";
+                        std::cin >> egr;
+                    }
+                    else
+                    {
+                        std::cout << "Klaida: reikia pasirinkti T arba N";
+                    }
+
+                    
+                    galutinis1 = gal_rez(egr, nd_rez);
+                    galutiniai.push_back(galutinis1);
+
+                    galutinis2 = gal_mediana(egr, nd_rez);
+                    galutiniai2.push_back(galutinis2);
+
+                    nd_rez.clear();
+
+                
+                }
+             
+            }
     }
+}
+    else {
+    std::cout << "Studentu skaicius turi buti teigiamas skaicius \n";
+}
+std::cout << "Mediana ar Vidurkis (M/V): \n";
+std::cin >> mv;
 
-    std::cout << "Mediana ar Vidurkis (M/V): \n";
-    std::cin >> mv;
-
-    if (std::strcmp(&mv, "M"))
-    {
-        atsp_rez(vardai, pavardes, galutiniai2);
-    }
-    else
-    {
-        atsp_rez(vardai, pavardes, galutiniai);
-    }
-
+if (std::strcmp(&mv, "M"))
+{
+    atsp_rez(vardai, pavardes, galutiniai2);
+}
+else
+{
+    atsp_rez(vardai, pavardes, galutiniai);
+}
 }
 
+// Double funkcija, apskaiciuojanti kiekvieno studento nd pazymiu vidurki ir grazinanti galutini bala, apskaiciuota pagal salygoje nurodyta formule
 double gal_rez(int egr, std::vector<double> nd_rez)
 {
     double vidurkis, galutinis1;
@@ -95,6 +164,7 @@ double gal_rez(int egr, std::vector<double> nd_rez)
     return galutinis1;
 }
 
+// Double funkcija, apskaiciuojanti ir grazianti nd bei egzamino pazymiu mediana
 double gal_mediana(int egr, std::vector<double> nd_rez)
 {
     double mediana, galutinis2;
@@ -115,21 +185,18 @@ double gal_mediana(int egr, std::vector<double> nd_rez)
     else
     {
         return eilute[eilute.size() / 2];
-
     }
-
     return galutinis2;
 }
 
- void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai)
-    {
-     std::cout << std::setw(25) << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis" << std::endl;
-        std::cout << "---------------------------------------------------------------------------------\n";
-        for (int i = 0; i < vardai.size(); i++) {
+// Void funkcija, spausdinanti rezulatatu lentele
+void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai)
+{
+    std::cout << std::setw(25) << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis" << std::endl;
+    std::cout << "---------------------------------------------------------------------------------\n";
+    for (int i = 0; i < vardai.size(); i++) {
 
-            std::cout << std::setw(25) << vardai.at(i) << std::setw(25) << pavardes.at(i) << std::setw(25) << galutiniai.at(i) << std::endl;
+        std::cout << std::setw(25) << vardai.at(i) << std::setw(25) << pavardes.at(i) << std::setw(25) << galutiniai.at(i) << std::endl;
 
-        }
+    }
 }
-
-
