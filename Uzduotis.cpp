@@ -14,6 +14,7 @@ v0.1 uzduotis, realizuota naudojant std::vector tipo konteineri.
 #include <iostream>
 #include <cstring>
 
+
 double gal_rez(int egr, std::vector<double> nd_rez);
 double gal_mediana(int egr, std::vector<double> nd_rez);
 void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai);
@@ -23,8 +24,6 @@ int main()
     int sk, ndr_sk, egr, tmp, tmp2;
     double galutinis1, galutinis2;
 
-    std::string vardas, pavarde;
-    
     char mv;
 
     std::vector<double> nd_rez;
@@ -32,6 +31,9 @@ int main()
     std::vector<std::string> pavardes;
     std::vector<double> galutiniai;
     std::vector<double> galutiniai2;
+
+    std::string vardas;
+    std::string pavarde;
 
     std::cout << "Iveskite studentu skaiciu: \n";
     std::cin >> sk;
@@ -71,6 +73,9 @@ int main()
                             srand(time(0));
                             tmp = rand() % max;
                             nd_rez.push_back(tmp);
+
+                            std::cout << "SUGENERUOTAS NAMU DARBU BALAS  " << tmp << "\n";
+
 
                             std::cout << "Ar jau ivesti visi rezulatatai (T/N)? \n";
                             std::string tn;
@@ -116,6 +121,7 @@ int main()
                             int max = 10;
                             srand(time(0));
                             egr = rand()%max;
+                            std::cout << "SUGENERUOTAS EGZAMINO BALAS  " << egr << "\n";
                     }
                     else if (ats == "N") 
                     {
@@ -131,16 +137,12 @@ int main()
                         std::cout << "Klaida: reikia pasirinkti T arba N";
                     }
 
-                    
-                    galutinis1 = gal_rez(egr, nd_rez);
-                    galutiniai.push_back(galutinis1);
+                    galutiniai.push_back(gal_rez(egr, nd_rez));
 
-                    galutinis2 = gal_mediana(egr, nd_rez);
-                    galutiniai2.push_back(galutinis2);
+                    galutiniai2.push_back(gal_mediana(egr, nd_rez));
 
                     nd_rez.clear();
 
-                
                 }
              
             }
@@ -160,6 +162,7 @@ else
 {
     atsp_rez(vardai, pavardes, galutiniai);
 }
+
 }
 
 // Double funkcija, apskaiciuojanti kiekvieno studento nd pazymiu vidurki ir grazinanti galutini bala, apskaiciuota pagal salygoje nurodyta formule
@@ -176,8 +179,6 @@ double gal_rez(int egr, std::vector<double> nd_rez)
 // Double funkcija, apskaiciuojanti ir grazianti nd bei egzamino pazymiu mediana
 double gal_mediana(int egr, std::vector<double> nd_rez)
 {
-    double mediana, galutinis2;
-
     std::vector<double> eilute;
     for (int i = 0; i < nd_rez.size(); i++) {
         eilute.push_back(nd_rez.at(i)); 
@@ -195,7 +196,6 @@ double gal_mediana(int egr, std::vector<double> nd_rez)
     {
         return eilute[eilute.size() / 2];
     }
-    return galutinis2;
 }
 
 // Void funkcija, spausdinanti rezulatatu lentele
