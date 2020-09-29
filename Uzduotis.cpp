@@ -1,7 +1,7 @@
 /*
 DOKUMENTACIJA
-v0.2 uzduotis, realizuota naudojant std::vector tipo konteineri bei pavyzdini faila.
-Pridetas duomenu skaitymas is .txt failu, realizuotas rusiavimas bei duomenu rasymas i .txt faila.
+v0.2 uzduotis, realizuota naudojant std::vector tipo konteineri bei ikelta pavyzdini faila.
+Pridetas duomenu skaitymas is .txt failo, realizuotas rusiavimas bei duomenu rasymas i .txt faila.
 */
 
 #include <iostream>
@@ -18,6 +18,7 @@ Pridetas duomenu skaitymas is .txt failu, realizuotas rusiavimas bei duomenu ras
 #include <cstdio>
 #include <sstream> 
 
+// Aprasomos trys strukturos, talpinancios kintamuosius
 
 struct informacija
 {
@@ -49,6 +50,7 @@ double gal_mediana(int egr, std::vector<double> nd_rez);
 void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai);
 
 // naudojama palyginimo funckija,kurios reikia sortui
+
 bool compareV(studentas_sort& a, studentas_sort& b) { return a.vardai < b.vardai; }
 bool compareP(studentas_sort& a, studentas_sort& b) { return a.pavardes < b.pavardes; }
 
@@ -67,7 +69,7 @@ int main()
     std::ofstream myfile;
     std::fstream infile;
 
-    int sk, ndr_sk, egr, tmp, tmp2;
+    int sk, egr, tmp, tmp2;
 
     std::vector<double> nd_rez;
     std::vector<std::string> vardai;
@@ -109,6 +111,7 @@ int main()
         }
         else {
 
+            // tikrinama, ar failo duomenys yra is tikruju skaiciai, o ne raides
             while (k != 0 && infile >> vardas_i >> pavarde_i >> nd1_i >> nd2_i >> nd3_i >> nd4_i >> nd5_i >> nd6_i >> nd7_i >> nd8_i >> nd9_i >> nd10_i >> nd11_i >> nd12_i >> nd13_i >> nd14_i >> nd15_i >> egz_i)
             {
 
@@ -214,6 +217,7 @@ int main()
             std::sort(stud_rus.begin(), stud_rus.end(), compareP);
         }
 
+        // skaitymas i faila
         myfile.open("kursiokai.txt");
 
         if (myfile.fail())
