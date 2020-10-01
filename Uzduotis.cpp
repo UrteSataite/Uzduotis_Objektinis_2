@@ -1,3 +1,4 @@
+
 /*
 DOKUMENTACIJA
 v0.2 uzduotis, realizuota naudojant std::vector tipo konteineri bei ikelta pavyzdini faila.
@@ -420,3 +421,4 @@ void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes
 
     }
 }
+
