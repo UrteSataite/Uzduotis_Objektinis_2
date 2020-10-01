@@ -24,16 +24,14 @@ struct informacija
 {
     std::string vardai;
     std::string pavardes;
-    std::string nd1, nd2, nd3, nd4, nd5, nd6, nd7, nd8, nd9, nd10, nd11, nd12, nd13, nd14, nd15;
-    std::string egz;
+    std::vector<std::string> iverciai;
 };
 
 struct studentas
 {
     std::string vardai;
     std::string pavardes;
-    int nd1, nd2, nd3, nd4, nd5, nd6, nd7, nd8, nd9, nd10, nd11, nd12, nd13, nd14, nd15;
-    int egz;
+    std::vector<int> iverciai;
 };
 
 struct studentas_sort
@@ -45,14 +43,14 @@ struct studentas_sort
 };
 
 
-double gal_rez(int egr, std::vector<double> nd_rez);
-double gal_mediana(int egr, std::vector<double> nd_rez);
+double gal_rez(int egr, std::vector<int> nd_rez);
+double gal_mediana(int egr, std::vector<int> nd_rez);
 void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai);
 
 // naudojama palyginimo funckija,kurios reikia sortui
 
-bool compareV(studentas_sort& a, studentas_sort& b) { return a.vardai < b.vardai; }
-bool compareP(studentas_sort& a, studentas_sort& b) { return a.pavardes < b.pavardes; }
+bool compareV(studentas_sort& a, studentas_sort& b) { return a.vardai < b.vardai; };
+bool compareP(studentas_sort& a, studentas_sort& b) { return a.pavardes < b.pavardes; };
 
 bool isNumber(std::string s)
 {
@@ -69,17 +67,13 @@ int main()
     std::ofstream myfile;
     std::fstream infile;
 
-    int sk, egr, tmp, tmp2;
+    int sk, egr{}, tmp, tmp2;
 
-    std::vector<double> nd_rez;
+    std::vector<int> nd_rez;
     std::vector<std::string> vardai;
     std::vector<std::string> pavardes;
     std::vector<double> galutiniai;
     std::vector<double> galutiniai2;
-
-
-    std::string nd1_i, nd2_i, nd3_i, nd4_i, nd5_i, nd6_i, nd7_i, nd8_i, nd9_i, nd10_i, nd11_i, nd12_i, nd13_i, nd14_i, nd15_i, egz_i;
-    std::string nd1, nd2, nd3, nd4, nd5, nd6, nd7, nd8, nd9, nd10, nd11, nd12, nd13, nd14, nd15, egz;
 
     std::string vardas, pavarde, vardas_i, pavarde_i;
 
@@ -94,159 +88,163 @@ int main()
 
     if (opt == "N")
     {
-        infile.open("studentai10000.txt");
-
-        int k = -1;
-
         std::vector<studentas> studentai;
         std::vector<informacija> info;
-        std::vector<std::string> patikrinimas;
         std::vector<int> patikrinti;
-        int egz_rezul;
+        
+        std::string failo_pav;
+
+        std::cout << "Iveskite failo, is kurio bus skaitomi duomenys, pavadinima: \n";
+        std::cin >> failo_pav;
+
+        infile.open(failo_pav);
+
+        int rows = 0, cols = 0;
+        std::string eilute, reiksme;
+        // while ciklas skirtas suzinoti, kiek failas turi eiluciu ir stulpeliu
+        while (std::getline(infile, eilute)) {
+            rows++;
+            if (rows == 1)
+            {
+                std::stringstream ss(eilute);
+                while (ss >> reiksme)
+                    cols++;
+            }
+        }
+        infile.close();
+
+        infile.open(failo_pav);
+
+        std::string rez;
+        std::vector<std::string> visi_rezultatai_i;
+        std::vector<std::string> visi_rezultatai;
 
         if (infile.fail())
         {
             perror(nullptr);
             return 1;
         }
-        else {
-
-            // tikrinama, ar failo duomenys yra is tikruju skaiciai, o ne raides
-            while (k != 0 && infile >> vardas_i >> pavarde_i >> nd1_i >> nd2_i >> nd3_i >> nd4_i >> nd5_i >> nd6_i >> nd7_i >> nd8_i >> nd9_i >> nd10_i >> nd11_i >> nd12_i >> nd13_i >> nd14_i >> nd15_i >> egz_i)
+        else
+        {
+            // nuskaitoma pirma failo eilute (etiketes)
+            for (int i = 0; i < 1; i++)
             {
+                infile >> vardas_i >> pavarde_i;
 
-                info.push_back(informacija{ vardas_i, pavarde_i, nd1_i, nd2_i, nd3_i, nd4_i, nd5_i, nd6_i, nd7_i, nd8_i, nd9_i, nd10_i, nd11_i, nd12_i, nd13_i, nd14_i, nd15_i, egz_i });
-                k++;
+                for (int j = 0; j < cols-2; j++)
+                {
+                    infile >> rez;
+                    visi_rezultatai_i.push_back(rez);
+                }
 
+                info.push_back(informacija{vardas_i, pavarde_i, visi_rezultatai_i});
+                visi_rezultatai_i.clear();
+                // swap funckija naudojama visame kode tam, kad sukeistu nauja sukurta vektoriu su isvalytu reikiamu vektoriu
+                // be swap funkcijos iskyla problemu del atminties, kurios paprastas clear() neisvalo
+                std::vector<std::string>().swap(visi_rezultatai_i);
             }
 
-            while (infile >> vardas >> pavarde >> nd1 >> nd2 >> nd3 >> nd4 >> nd5 >> nd6 >> nd7 >> nd8 >> nd9 >> nd10 >> nd11 >> nd12 >> nd13 >> nd14 >> nd15 >> egz)
-            {
-                patikrinimas.push_back(nd1);
-                patikrinimas.push_back(nd2);
-                patikrinimas.push_back(nd3);
-                patikrinimas.push_back(nd4);
-                patikrinimas.push_back(nd5);
-                patikrinimas.push_back(nd6);
-                patikrinimas.push_back(nd7);
-                patikrinimas.push_back(nd8);
-                patikrinimas.push_back(nd9);
-                patikrinimas.push_back(nd10);
-                patikrinimas.push_back(nd11);
-                patikrinimas.push_back(nd12);
-                patikrinimas.push_back(nd13);
-                patikrinimas.push_back(nd14);
-                patikrinimas.push_back(nd15);
-                patikrinimas.push_back(egz);
 
-                for (int i = 0; i < patikrinimas.size(); i++)
+            // nuskaitoma likusi dokumento dalis (be etikeciu, tik duomenys)
+            for (int i = 1; i < rows; i++)
+            {
+                infile >> vardas >> pavarde;
+
+                for (int j = 0; j < cols-2; j++)
                 {
-                    if (!isNumber(patikrinimas.at(i)))
+                    infile >> rez;
+                    visi_rezultatai.push_back(rez);
+
+                    for (int i = 0; i < visi_rezultatai.size(); i++)
                     {
-                        patikrinti.push_back(0);
-                    }
-                    else
-                    {
-                        patikrinti.push_back(std::stoi(patikrinimas.at(i)));
+                        if (!isNumber(visi_rezultatai[i]))
+                        {
+                            std::cout << "Klaida: faile rezultatu vietose yra raides! \n";
+                        }
+                        else
+                        {
+                            patikrinti.push_back(std::stoi(visi_rezultatai[i]));
+                        }
+
+                        visi_rezultatai.clear();
+                        std::vector<std::string>().swap(visi_rezultatai);
                     }
                 }
 
-                studentai.push_back(studentas{ vardas, pavarde, patikrinti.at(0), patikrinti.at(1), patikrinti.at(2), patikrinti.at(3), patikrinti.at(4), patikrinti.at(5), patikrinti.at(6), patikrinti.at(7), patikrinti.at(8), patikrinti.at(9), patikrinti.at(10), patikrinti.at(11), patikrinti.at(12), patikrinti.at(13), patikrinti.at(14), patikrinti.at(15) });
-                k++;
-                patikrinimas.clear();
+                studentai.push_back(studentas{ vardas, pavarde, patikrinti });
+
+                patikrinti.clear();
+                std::vector<int>().swap(patikrinti);
             }
 
-        }
+            std::vector<double> vidurkiai;
+            std::vector<double> medianos;
 
-        infile.close();
-
-
-
-        /* V0.2 ANTRAS PUNKTAS PRASIDEDA*/
-
-        std::vector<double> nd_rezul;
-        std::vector<double> egz_rez;
-        std::vector<double> vidurkiai;
-        std::vector<double> medianos;
-        for (int i = 0; i < studentai.size(); i++)
-        {
-
-            std::cout << "SKAICIUOJAMA MEDIANA IR VIDURKIS" << "\n";
-            nd_rezul.push_back(studentai[i].nd1);
-            nd_rezul.push_back(studentai[i].nd2);
-            nd_rezul.push_back(studentai[i].nd3);
-            nd_rezul.push_back(studentai[i].nd4);
-            nd_rezul.push_back(studentai[i].nd5);
-            nd_rezul.push_back(studentai[i].nd6);
-            nd_rezul.push_back(studentai[i].nd7);
-            nd_rezul.push_back(studentai[i].nd8);
-            nd_rezul.push_back(studentai[i].nd9);
-            nd_rezul.push_back(studentai[i].nd10);
-            nd_rezul.push_back(studentai[i].nd11);
-            nd_rezul.push_back(studentai[i].nd12);
-            nd_rezul.push_back(studentai[i].nd13);
-            nd_rezul.push_back(studentai[i].nd14);
-            nd_rezul.push_back(studentai[i].nd15);
-            egz_rez.push_back(studentai[i].egz);
-
-            vidurkiai.push_back(gal_rez(egz_rez[i], nd_rezul));
-
-            medianos.push_back(gal_mediana(egz_rez[i], nd_rezul));
-        }
-
-
-        std::vector<studentas_sort> stud_rus;
-
-
-        for (int i = 0; i < studentai.size(); i++)
-        {
-            stud_rus.push_back(studentas_sort{ studentai[i].vardai, studentai[i].pavardes, vidurkiai[i],medianos[i] });
-        }
-
-        // rusiavimas
-        std::string var;
-        std::cout << "Rusiuoti pagal pavardes ar vardus ? (V/P)";
-        std::cin >> var;
-
-        if (var == "V")
-        {
-            std::sort(stud_rus.begin(), stud_rus.end(), compareV);
-        }
-        else if (var == "P")
-        {
-            std::sort(stud_rus.begin(), stud_rus.end(), compareP);
-        }
-
-        // skaitymas i faila
-        myfile.open("kursiokai.txt");
-
-        if (myfile.fail())
-        {
-            perror(nullptr);
-            return 1;
-        }
-        else
-        {
-            for (int i = 0; i < info.size(); i++)
-            {
-                myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis(Vid.)" << std::setw(25) << "Galutinis(Med.)" << "\n";
-            }
 
             for (int i = 0; i < studentai.size(); i++)
             {
-                myfile << stud_rus[i].vardai << std::setw(25) << stud_rus[i].pavardes << std::setw(25) << stud_rus[i].vidurkiai << std::setw(25) << stud_rus[i].medianos << "\n";
+
+                std::cout << "Skaiciuojama mediana ir vidurkis \n";
+
+                vidurkiai.push_back(gal_rez(studentai[i].iverciai.back(), studentai[i].iverciai));
+                medianos.push_back(gal_mediana(studentai[i].iverciai.back(), studentai[i].iverciai));
             }
-        }
 
-        myfile.close();
+            std::vector<studentas_sort> stud_rus;
 
-        /* V0.2 ANTRAS PUNKTAS PASIBAIGIA*/
+            for (int i = 0; i < studentai.size(); i++)
+            {
+                stud_rus.push_back(studentas_sort{ studentai[i].vardai, studentai[i].pavardes, vidurkiai[i], medianos[i]});
+            }
 
+            vidurkiai.clear();
+            medianos.clear();
+            studentai.clear();
+            std::vector<double>().swap(vidurkiai);
+            std::vector<double>().swap(medianos);
+            std::vector<studentas>().swap(studentai);
+
+            // rusiavimas
+            std::string var;
+            std::cout << "Rusiuoti pagal pavardes ar vardus ? (V/P)";
+            std::cin >> var;
+
+            if (var == "V")
+            {
+                std::sort(stud_rus.begin(), stud_rus.end(), compareV);
+            }
+            else if (var == "P")
+            {
+                std::sort(stud_rus.begin(), stud_rus.end(), compareP);
+            }
+
+            // skaitymas i faila
+            myfile.open("kursiokai.txt");
+
+            if (myfile.fail())
+            {
+                perror(nullptr);
+                return 1;
+            }
+            else
+            {
+                for (int i = 0; i < info.size(); i++)
+                {
+                    myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis(Vid.)" << std::setw(25) << "Galutinis(Med.)" << "\n";
+                }
+
+                for (int i = 0; i < stud_rus.size(); i++)
+                {
+                    myfile << stud_rus[i].vardai << std::setw(25) << stud_rus[i].pavardes << std::setw(25) << stud_rus[i].vidurkiai << std::setw(25) << stud_rus[i].medianos << "\n";
+                }
+            }
+            myfile.close();
+            stud_rus.clear();
+            std::vector<studentas_sort>().swap(stud_rus);
+    }
     }
     else if (opt == "I")
     {
-
-
         std::cout << "Iveskite studentu skaiciu: \n";
         std::cin >> sk;
 
@@ -379,7 +377,7 @@ int main()
 
 
 // Double funkcija, apskaiciuojanti kiekvieno studento nd pazymiu vidurki ir grazinanti galutini bala, apskaiciuota pagal salygoje nurodyta formule
-double gal_rez(int egr, std::vector<double> nd_rez)
+double gal_rez(int egr, std::vector<int> nd_rez)
 {
     double vidurkis, galutinis1;
 
@@ -390,7 +388,7 @@ double gal_rez(int egr, std::vector<double> nd_rez)
 }
 
 // Double funkcija, apskaiciuojanti ir grazianti nd bei egzamino pazymiu mediana
-double gal_mediana(int egr, std::vector<double> nd_rez)
+double gal_mediana(int egr, std::vector<int> nd_rez)
 {
     std::vector<double> eilute;
     for (int i = 0; i < nd_rez.size(); i++) {
@@ -418,7 +416,7 @@ void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes
     std::cout << "---------------------------------------------------------------------------------\n";
     for (int i = 0; i < vardai.size(); i++) {
 
-        std::cout << std::setw(25) << vardai.at(i) << std::setw(25) << pavardes.at(i) << std::setw(25) << galutiniai.at(i) << std::endl;
+        std::cout << std::setw(25) << vardai[i] << std::setw(25) << pavardes[i] << std::setw(25) << galutiniai[i] << std::endl;
 
     }
 }
