@@ -18,50 +18,9 @@ Pridetas duomenu skaitymas is .txt failo, realizuotas rusiavimas bei duomenu ras
 #include <fstream>
 #include <cstdio>
 #include <sstream> 
-
-// Aprasomos trys strukturos, talpinancios kintamuosius
-
-struct informacija
-{
-    std::string vardai;
-    std::string pavardes;
-    std::vector<std::string> iverciai;
-};
-
-struct studentas
-{
-    std::string vardai;
-    std::string pavardes;
-    std::vector<int> iverciai;
-};
-
-struct studentas_sort
-{
-    std::string vardai;
-    std::string pavardes;
-    double vidurkiai;
-    double medianos;
-};
-
-
-double gal_rez(int egr, std::vector<int> nd_rez);
-double gal_mediana(int egr, std::vector<int> nd_rez);
-void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai);
-
-// naudojama palyginimo funckija,kurios reikia sortui
-
-bool compareV(studentas_sort& a, studentas_sort& b) { return a.vardai < b.vardai; };
-bool compareP(studentas_sort& a, studentas_sort& b) { return a.pavardes < b.pavardes; };
-
-bool isNumber(std::string s)
-{
-    for (int i = 0; i < s.length(); i++)
-        if (isdigit(s[i]) == false)
-            return false;
-
-    return true;
-}
-
+#include "spausdinimas.h"
+#include "skaiciavimai.h"
+#include "strukturos.h"
 
 int main()
 {
@@ -231,7 +190,7 @@ int main()
             {
                 for (int i = 0; i < info.size(); i++)
                 {
-                    myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis(Vid.)" << std::setw(25) << "Galutinis(Med.)" << "\n";
+                    myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << std::fixed << std::setprecision(2) << "Galutinis(Vid.)" << std::setw(25) << std::fixed << std::setprecision(2) << "Galutinis(Med.)" << "\n";
                 }
 
                 for (int i = 0; i < stud_rus.size(); i++)
@@ -375,50 +334,3 @@ int main()
         }
     }
 }
-
-
-// Double funkcija, apskaiciuojanti kiekvieno studento nd pazymiu vidurki ir grazinanti galutini bala, apskaiciuota pagal salygoje nurodyta formule
-double gal_rez(int egr, std::vector<int> nd_rez)
-{
-    double vidurkis, galutinis1;
-
-    vidurkis = accumulate(nd_rez.begin(), nd_rez.end(), 0.000) / nd_rez.size();
-    galutinis1 = (0.4 * vidurkis) + (0.6 * egr);
-
-    return galutinis1;
-}
-
-// Double funkcija, apskaiciuojanti ir grazianti nd bei egzamino pazymiu mediana
-double gal_mediana(int egr, std::vector<int> nd_rez)
-{
-    std::vector<double> eilute;
-    for (int i = 0; i < nd_rez.size(); i++) {
-        eilute.push_back(nd_rez.at(i));
-    }
-
-    eilute.push_back(egr);
-
-    std::sort(eilute.begin(), eilute.end());
-
-    if (eilute.size() % 2 == 0)
-    {
-        return (eilute[eilute.size() / 2 - 1] + eilute[eilute.size() / 2]) / 2;
-    }
-    else
-    {
-        return eilute[eilute.size() / 2];
-    }
-}
-
-// Void funkcija, spausdinanti rezulatatu lentele
-void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai)
-{
-    std::cout << std::setw(25) << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis" << std::endl;
-    std::cout << "---------------------------------------------------------------------------------\n";
-    for (int i = 0; i < vardai.size(); i++) {
-
-        std::cout << std::setw(25) << vardai[i] << std::setw(25) << pavardes[i] << std::setw(25) << galutiniai[i] << std::endl;
-
-    }
-}
-
