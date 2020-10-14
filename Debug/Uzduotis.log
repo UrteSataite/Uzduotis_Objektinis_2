@@ -2,13 +2,14 @@
 C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\spausdinimas.h(7,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\skaiciavimai.h(7,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\skaiciavimai.h(42,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(117,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(143,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(154,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(184,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(189,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(248,21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(297,20): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(42,6): warning C4101: 'egzaminai': unreferenced local variable
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(30,22): warning C4101: 'tmp2': unreferenced local variable
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(118,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(144,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(155,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(185,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(190,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(252,21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(301,20): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(43,6): warning C4101: 'egzaminai': unreferenced local variable
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(31,22): warning C4101: 'tmp2': unreferenced local variable
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(342,35): warning C4101: 'e': unreferenced local variable
   Uzduotis.vcxproj -> C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Debug\Uzduotis.exe

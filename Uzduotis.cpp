@@ -209,12 +209,16 @@ int main()
 			// nuskaitoma pirma failo eilute (etiketes)
 
 			else if (opt == "I")
-			{
-				std::cout << "Iveskite studentu skaiciu: \n";
-				std::cin >> sk;
+			{	
+				try {
+					std::cout << "Iveskite studentu skaiciu: \n";
+					std::cin >> sk;
 
-				if (sk > 0)
-				{
+					if (!isdigit(sk) || sk < 0)
+					{
+						throw std::invalid_argument("Ivesta reiksme turi buti skaicius didesnis uz 0! \n");
+					}
+
 					for (int i = 0; i < sk; i++) {
 
 						std::cout << "Iveskite studento varda: \n";
@@ -322,20 +326,22 @@ int main()
 
 						}
 					}
-				}
-				else {
-					std::cout << "Studentu skaicius turi buti teigiamas skaicius \n";
-				}
-				std::cout << "Mediana ar Vidurkis (M/V): \n";
-				std::cin >> mv;
 
-				if (std::strcmp(&mv, "M"))
-				{
-					atsp_rez(vardai, pavardes, galutiniai2);
+					std::cout << "Mediana ar Vidurkis (M/V): \n";
+					std::cin >> mv;
+
+					if (std::strcmp(&mv, "M"))
+					{
+						atsp_rez(vardai, pavardes, galutiniai2);
+					}
+					else
+					{
+						atsp_rez(vardai, pavardes, galutiniai);
+					}
 				}
-				else
-				{
-					atsp_rez(vardai, pavardes, galutiniai);
+				catch (std::invalid_argument& e) {
+					std::cout << "Studentu skaicius turi buti teigiamas skaicius! \n";
+					std::cout << "Ivesta reiksme: " << sk << std::endl;
 				}
 			}
 		}
