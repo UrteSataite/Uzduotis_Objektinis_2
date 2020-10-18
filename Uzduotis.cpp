@@ -4,14 +4,32 @@
 // Pridetas duomenu skaitymas is .txt failo, realizuotas rusiavimas bei duomenu rasymas i .txt faila.
 // v0.3 uzduotis, is main'o i .h failus iskeltos funkcijos, strukturos, naudojamos bibliotekos bei aprasyti kintamieji. Taip pat programa papildyta try {} catch {}.
 
-#include <random>
-#include "biblioteka.h"
 #include "funkcijos.h"
 #include "outputai.h"
 #include "strukturos.h"
 
 int main()
 {
+
+	int sk, egr{}, tmp, tmp2;
+	std::vector<int> nd_rez;
+	std::vector<std::string> vardai;
+	std::vector<std::string> pavardes;
+	std::vector<double> galutiniai;
+	std::vector<double> galutiniai2;
+	std::string vardas, pavarde, vardas_i, pavarde_i;
+	std::string mv;
+	int egzaminai;
+	std::string opt;
+	std::string ats;
+	std::string ats2;
+	std::string tn;
+	std::string tn2;
+	std::string failo_pav1;
+	std::ifstream infile1;
+
+
+
 	do {
 		try {
 			std::cout << "Ar norite nuskaityti is failo duomenis ar ivesti ? (N-nuskaityti/I-ivesti)\n";
@@ -31,12 +49,31 @@ int main()
 
 	if (opt == "N")
 	{
-	
-		std::vector<studentas> studentai = failo_nuskaitymas();
+
+		do {
+			try {
+				std::cout << "Iveskite failo, is kurio bus skaitomi duomenys, pavadinima: \n";
+				std::cin >> failo_pav1;
+				infile1.open(failo_pav1);
+
+				if (infile1.fail())
+				{
+					throw std::runtime_error("Nepavyksta atverti duomenu failo. Patikrinkite, ar failo pavadinimas ivestas teisingai!");
+				}
+			}
+			catch (std::runtime_error& x) {
+				std::cout << x.what() << std::endl;
+				perror(nullptr);
+				std::cout << "Ivestas failo pavadinimas: " << failo_pav1 << std::endl;
+				std::cout << "Iveskite failo pavadinima dar karta! " << std::endl;
+			}
+		} while (infile1.fail());
+
+		std::vector<studentas> studentai = failo_nuskaitymas(failo_pav1, infile1);
 		std::vector<double> vidurkiai = vid_skaiciavimas(studentai);
 		std::vector<double> medianos = med_skaiciavimas(studentai);
 		std::vector<studentas_sort> stud_rus = rusiavimas(studentai, vidurkiai, medianos);
-		rasymas_i_faila(stud_rus);
+		rasymas_i_faila_kursiokiai(stud_rus, "kursiokai.txt");
 	}
 
 	else if (opt == "I")
@@ -254,5 +291,20 @@ int main()
 		{
 			atsp_rez(vardai, pavardes, galutiniai);
 		}
-	} 
 	}
+
+	std::string failo_pav;
+	std::ifstream infile;
+
+	//Generuojami failai
+	failu_generavimas();
+
+	
+	testas("stud1000.txt", 1000, 1);
+	testas("stud10000.txt", 10000, 2);
+	/*testas("stud100000.txt", 100000, 3);
+	testas("stud1000000.txt", 1000000, 4);
+	testas("stud10000000.txt", 10000000, 5);*/
+
+}
+
