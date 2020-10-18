@@ -4,11 +4,14 @@
 // Pridetas duomenu skaitymas is .txt failo, realizuotas rusiavimas bei duomenu rasymas i .txt faila.
 // v0.3 uzduotis, is main'o i .h failus iskeltos funkcijos, strukturos, naudojamos bibliotekos bei aprasyti kintamieji. Taip pat programa papildyta try {} catch {}.
 
+#include <random>
 #include "biblioteka.h"
+#include "funkcijos.h"
+#include "outputai.h"
+#include "strukturos.h"
 
 int main()
 {
-	
 	do {
 		try {
 			std::cout << "Ar norite nuskaityti is failo duomenis ar ivesti ? (N-nuskaityti/I-ivesti)\n";
@@ -28,155 +31,12 @@ int main()
 
 	if (opt == "N")
 	{
-		std::vector<studentas> studentai;
-		std::vector<informacija> info;
-		std::vector<int> patikrinti;
-		std::string failo_pav;
-
-		do {
-			try {
-				std::cout << "Iveskite failo, is kurio bus skaitomi duomenys, pavadinima: \n";
-				std::cin >> failo_pav;
-				infile.open(failo_pav);
-
-				if (infile.fail())
-				{
-					throw std::runtime_error("Nepavyksta atverti duomenu failo. Patikrinkite, ar failo pavadinimas ivestas teisingai!");
-				}
-			}
-			catch (std::runtime_error& x) {
-				std::cout << x.what() << std::endl;
-				std::cout << "Ivestas failo pavadinimas: " << failo_pav << std::endl;
-				std::cout << "Iveskite failo pavadinima dar karta! " << std::endl;
-			}
-		} while (infile.fail());
-
-		int rows = 0, cols = 0;
-		std::string eilute, reiksme;
-
-		// while ciklas skirtas suzinoti, kiek failas turi eiluciu ir stulpeliu
-		while (std::getline(infile, eilute)) {
-			rows++;
-			if (rows == 1)
-			{
-				std::stringstream ss(eilute);
-				while (ss >> reiksme)
-					cols++;
-			}
-		}
-		infile.close();
-		infile.open(failo_pav);
-
-		std::string rez;
-		std::vector<std::string> visi_rezultatai_i;
-		std::vector<std::string> visi_rezultatai;
-
-		for (int i = 0; i < 1; i++)
-		{
-			infile >> vardas_i >> pavarde_i;
-			for (int j = 0; j < cols - 2; j++)
-			{
-				infile >> rez;
-				visi_rezultatai_i.push_back(rez);
-			}
-			info.push_back(informacija{ vardas_i, pavarde_i, visi_rezultatai_i });
-			visi_rezultatai_i.clear();
-			// swap funckija naudojama visame kode tam, kad sukeistu nauja sukurta vektoriu su isvalytu reikiamu vektoriu
-			// be swap funkcijos iskyla problemu del atminties, kurios paprastas clear() neisvalo
-			std::vector<std::string>().swap(visi_rezultatai_i);
-		}
-		// nuskaitoma likusi dokumento dalis (be etikeciu, tik duomenys)
-		for (int i = 1; i < rows; i++)
-		{
-			infile >> vardas >> pavarde;
-			for (int j = 0; j < cols - 2; j++)
-			{
-				infile >> rez;
-				visi_rezultatai.push_back(rez);
-				for (int i = 0; i < visi_rezultatai.size(); i++)
-				{
-					if (!isNumber(visi_rezultatai[i]))
-					{
-						std::cout << "Klaida: faile rezultatu vietose yra raides! \n";
-					}
-					else
-					{
-						patikrinti.push_back(std::stoi(visi_rezultatai[i]));
-					}
-					visi_rezultatai.clear();
-					std::vector<std::string>().swap(visi_rezultatai);
-				}
-			}
-			studentai.push_back(studentas{ vardas, pavarde, patikrinti });
-			patikrinti.clear();
-			std::vector<int>().swap(patikrinti);
-		}
-		std::vector<double> vidurkiai;
-		std::vector<double> medianos;
-		for (int i = 0; i < studentai.size(); i++)
-		{
-			std::cout << "Skaiciuojama mediana ir vidurkis \n";
-			vidurkiai.push_back(gal_rez(studentai[i].iverciai.back(), studentai[i].iverciai));
-			medianos.push_back(gal_mediana(studentai[i].iverciai.back(), studentai[i].iverciai));
-		}
-		std::vector<studentas_sort> stud_rus;
-		for (int i = 0; i < studentai.size(); i++)
-		{
-			stud_rus.push_back(studentas_sort{ studentai[i].vardai, studentai[i].pavardes, vidurkiai[i], medianos[i] });
-		}
-
-		vidurkiai.clear();
-		medianos.clear();
-		studentai.clear();
-
-		std::vector<double>().swap(vidurkiai);
-		std::vector<double>().swap(medianos);
-		std::vector<studentas>().swap(studentai);
-
-		// rusiavimas
-		std::string var;
-		do {
-			try {
-				std::cout << "Rusiuoti pagal vardus ar pavardes ? (V/P)";
-				std::cin >> var;
-
-				if (var != "V" && var != "P")
-				{
-					throw std::runtime_error("Neteisingas pasirinkimas! Galima pasirinkti V arba P");
-				}
-			}
-			catch (std::runtime_error& a) {
-				std::cout << a.what() << std::endl;
-				std::cout << "Jusu pasirinkimas: " << var << std::endl;
-				std::cout << "Pasirinkite dar karta." << std::endl;
-			}
-		} while (var != "V" && var != "P");
-
-		if (var == "V")
-		{
-			std::sort(stud_rus.begin(), stud_rus.end(), compareV);
-		}
-		else if (var == "P")
-		{
-			std::sort(stud_rus.begin(), stud_rus.end(), compareP);
-		}
-
-		// skaitymas i faila
-		myfile.open("kursiokai.txt");
-		for (int i = 0; i < info.size(); i++)
-		{
-			myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << std::fixed << std::setprecision(2) << "Galutinis(Vid.)" << std::setw(25) << std::fixed << std::setprecision(2) << "Galutinis(Med.)" << "\n";
-		}
-		for (int i = 0; i < stud_rus.size(); i++)
-		{
-			myfile << stud_rus[i].vardai << std::setw(25) << stud_rus[i].pavardes << std::setw(25) << stud_rus[i].vidurkiai << std::setw(25) << stud_rus[i].medianos << "\n";
-		}
-
-		myfile.close();
-		stud_rus.clear();
-		std::vector<studentas_sort>().swap(stud_rus);
-		std::vector<studentas_sort>().swap(stud_rus);
-
+	
+		std::vector<studentas> studentai = failo_nuskaitymas();
+		std::vector<double> vidurkiai = vid_skaiciavimas(studentai);
+		std::vector<double> medianos = med_skaiciavimas(studentai);
+		std::vector<studentas_sort> stud_rus = rusiavimas(studentai, vidurkiai, medianos);
+		rasymas_i_faila(stud_rus);
 	}
 
 	else if (opt == "I")
@@ -394,5 +254,5 @@ int main()
 		{
 			atsp_rez(vardai, pavardes, galutiniai);
 		}
+	} 
 	}
-}

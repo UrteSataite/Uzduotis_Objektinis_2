@@ -1,5 +1,9 @@
+#ifndef STRUKTUROS_H
+#define STRUKTUROS_H
 
-// // Aprasomos trys strukturos, talpinancios ivedinamu/nuskaitomu duomenu (studentu) informacija 
+#include "biblioteka.h"
+#include "outputai.h"
+#include "funkcijos.h"
 
 struct informacija
 {
@@ -15,6 +19,7 @@ struct studentas
     std::vector<int> iverciai;
 };
 
+//STRUKTURA UZDUOCIAI V0.2 VERSIJAI
 struct studentas_sort
 {
     std::string vardai;
@@ -23,8 +28,30 @@ struct studentas_sort
     double medianos;
 }; 
 
+//STRUKTURA UZDUOCIAI V0.4 VERSIJAI
+/*
+struct studentai_sort {
+    std::string vardai;
+    std::string pavardes;
+    double galutiniai;
+};
+
+
+struct nuskriaustieji {
+    std::string vardai;
+    std::string pavardes;
+    double galutiniai;
+};
+
+struct galvociai {
+    std::string vardai;
+    std::string pavardes;
+    double galutiniai;
+}; */
+
 // naudojama palyginimo funckija,kurios reikia sortui
 
 bool compareV(studentas_sort& a, studentas_sort& b) { return a.vardai < b.vardai; };
-bool compareP(studentas_sort& a, studentas_sort& b) { return a.pavardes < b.pavardes; };
+bool compareP(studentas_sort& a, studentas_sort& b) { return a.pavardes < b .pavardes; };
 
+#endif

@@ -1,4 +1,6 @@
 // Biblioteka, talinanti visas programoje naudojamas bibliotekas bei aprasytus kintamuosius
+#ifndef BIBLIOTEKA_H
+#define BIBLIOTEKA_H
 
 #include <iostream>
 #include <vector>
@@ -13,12 +15,10 @@
 #include <fstream>
 #include <cstdio>
 #include <sstream> 
-#include "spausdinimas.h"
-#include "skaiciavimai.h"
-#include "strukturos.h"
 
 std::ofstream myfile;
 std::fstream infile;
+
 int sk, egr{}, tmp, tmp2;
 std::vector<int> nd_rez;
 std::vector<std::string> vardai;
@@ -34,3 +34,5 @@ std::string ats2;
 std::string tn;
 std::string tn2;
 
+
+#endif

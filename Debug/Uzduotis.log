@@ -1,14 +1,50 @@
-﻿  Uzduotis.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\spausdinimas.h(7,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\skaiciavimai.h(7,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\skaiciavimai.h(42,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(96,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(116,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(123,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(166,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(170,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(210,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(240,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(283,16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(353,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Uzduotis.vcxproj -> C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Debug\Uzduotis.exe
+﻿  funkcijos.cpp
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(11,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(93,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(126,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(144,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(177,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(190,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(207,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(260,23): warning C4018: '<': signed/unsigned mismatch
+  outputai.cpp
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(11,13): error C2065: 'studentas': undeclared identifier
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(11,6): error C2923: 'std::vector': 'studentas' is not a valid template type argument for parameter '_Ty'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(11,6): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : see declaration of 'std::vector'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(12,34): error C2065: 'studentas_sort': undeclared identifier
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(12,27): error C2923: 'std::vector': 'studentas_sort' is not a valid template type argument for parameter '_Ty'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(12,27): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : see declaration of 'std::vector'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(18,50): error C2065: 'studentas': undeclared identifier
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(18,43): error C2923: 'std::vector': 'studentas' is not a valid template type argument for parameter '_Ty'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(18,43): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : see declaration of 'std::vector'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(20,50): error C2065: 'studentas': undeclared identifier
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(20,43): error C2923: 'std::vector': 'studentas' is not a valid template type argument for parameter '_Ty'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(20,43): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : see declaration of 'std::vector'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(22,13): error C2065: 'studentas_sort': undeclared identifier
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(22,6): error C2923: 'std::vector': 'studentas_sort' is not a valid template type argument for parameter '_Ty'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(22,6): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : see declaration of 'std::vector'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(22,52): error C2065: 'studentas': undeclared identifier
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(22,45): error C2923: 'std::vector': 'studentas' is not a valid template type argument for parameter '_Ty'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(22,45): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : see declaration of 'std::vector'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.h(9,43): error C2556: 'std::vector<studentas,std::allocator<studentas>> failo_nuskaitymas(void)': overloaded function differs only by return type from 'std::vector failo_nuskaitymas(void)'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(11): message : see declaration of 'failo_nuskaitymas'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.h(9,24): error C2371: 'failo_nuskaitymas': redefinition; different basic types
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(11): message : see declaration of 'failo_nuskaitymas'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(11,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(19,1): error C2556: 'std::vector<studentas,std::allocator<studentas>> failo_nuskaitymas(void)': overloaded function differs only by return type from 'std::vector failo_nuskaitymas(void)'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.h(11): message : see declaration of 'failo_nuskaitymas'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(19,1): error C2079: 'failo_nuskaitymas' uses undefined class 'std::vector'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(93,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(126,20): warning C4018: '<': signed/unsigned mismatch
+  Uzduotis.cpp
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(70,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(100,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(143,16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(213,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...

@@ -18,5 +18,11 @@
     <ClCompile Include="Uzduotis.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="outputai.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="funkcijos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
