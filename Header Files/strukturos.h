@@ -17,13 +17,16 @@
 #include <sstream> 
 #include <random>
 #include <chrono>
+#include <list>
 
 
 struct studentas
 {
     std::string vardai;
     std::string pavardes;
-    std::vector<int> iverciai;
+    std::list<int> iverciai;
+
+
 };
 
 //STRUKTURA UZDUOCIAI V0.2 VERSIJAI
@@ -48,6 +51,14 @@ struct galvociai
     std::string vardai;
     std::string pavardes;
     double iverciai;
+};
+
+struct CompareAvg
+{
+    bool operator ()(const studentas_sort& a, const studentas_sort& b)
+    {
+        return a.vidurkiai < b.vidurkiai;
+    }
 };
 
 #endif

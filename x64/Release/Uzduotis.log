@@ -1,13 +1,7 @@
-﻿  funkcijos.cpp
-  outputai.cpp
-  Uzduotis.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,17): warning C4101: 'tmp': unreferenced local variable
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(22,6): warning C4101: 'egzaminai': unreferenced local variable
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,22): warning C4101: 'tmp2': unreferenced local variable
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,6): warning C4101: 'sk': unreferenced local variable
+﻿  outputai.cpp
   Generating code
-  677 of 677 functions (100.0%) were compiled.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  18 of 680 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
+    9 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Uzduotis.vcxproj -> C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\x64\Release\Uzduotis.exe

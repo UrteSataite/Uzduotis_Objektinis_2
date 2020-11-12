@@ -1,26 +1,21 @@
 #ifndef FUNKCIJOS_H
 #define FUNKCIJOS_H
 
-#include "strukturos.h"
+#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\strukturos.h"
 
-double gal_mediana(int egr, std::vector<int> nd_rez);
+double gal_mediana(int egr, std::list<int> nd_rez);
 
-double gal_rez(int egr, std::vector<int> nd_rez);
+double gal_rez(int egr, std::list<int> nd_rez);
 
-std::vector<double> vid_skaiciavimas(std::vector<studentas> studentai);
+std::list<double> vid_skaiciavimas(std::list<studentas> studentai);
 
-std::vector<double> med_skaiciavimas(std::vector<studentas> studentai);
+std::list<double> med_skaiciavimas(std::list<studentas> studentai);
 
-std::vector<studentas_sort> rusiavimas(std::vector<studentas> studentai, std::vector<double> vidurkiai, std::vector<double> medianos);
+std::list<studentas_sort> rusiavimas(std::list<studentas> studentai, std::list<double> vidurkiai, std::list<double> medianos);
 
 void testas(std::string failo_pav, int irasu_sk, int testas);
 
 bool isNumber(std::string s);
 
-bool compareV(studentas_sort& a, studentas_sort& b);
-
-bool compareP(studentas_sort& a, studentas_sort& b);
-
-bool compareAVG(studentas_sort& a, studentas_sort& b);
 
 #endif

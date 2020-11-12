@@ -2,16 +2,19 @@
 #include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\strukturos.h"
 #include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\outputai.h"
 
-double gal_mediana(int egr, std::vector<int> nd_rez)
+bool compareAVG(studentas_sort* a, studentas_sort* b) { return a->vidurkiai < b->vidurkiai; };
+bool compareV(studentas_sort* a, studentas_sort* b) { return a->vardai < b->vardai; };
+bool compareP(studentas_sort* a, studentas_sort* b) { return a->pavardes < b->pavardes; };
+
+
+double gal_mediana(int egr, std::list<int> nd_rez)
 {
 	std::vector<double> eilute;
-	for (int i = 0; i < nd_rez.size(); i++) {
-		eilute.push_back(nd_rez.at(i));
+	for (auto const& i : eilute) {
+		eilute.push_back(i);
 	}
 
 	eilute.push_back(egr);
-
-	std::sort(eilute.begin(), eilute.end());
 
 	if (eilute.size() % 2 == 0)
 	{
@@ -22,10 +25,8 @@ double gal_mediana(int egr, std::vector<int> nd_rez)
 		return eilute[eilute.size() / 2];
 	}
 }
-//
-//// Double funkcija, apskaiciuojanti kiekvieno studento nd pazymiu vidurki ir grazinanti galutini bala, apskaiciuota pagal salygoje nurodyta formule
-//
-double gal_rez(int egr, std::vector<int> nd_rez)
+
+double gal_rez(int egr, std::list<int> nd_rez)
 {
 	double vidurkis, galutinis1;
 
@@ -35,42 +36,42 @@ double gal_rez(int egr, std::vector<int> nd_rez)
 	return galutinis1;
 }
 
-std::vector<double> vid_skaiciavimas(std::vector<studentas> studentai)
+std::list<double> vid_skaiciavimas(std::list<studentas> studentai)
 {
-	std::vector<double> vidurkiai;
-	for (int i = 0; i < studentai.size(); i++)
+	std::list<double> vidurkiai;
+	for (auto const& i : studentai)
 	{
 		std::cout << "Skaiciuojamas vidurkis \n";
-		vidurkiai.push_back(gal_rez(studentai[i].iverciai.back(), studentai[i].iverciai));
+		vidurkiai.push_back(gal_rez(i.iverciai.back(), i.iverciai));
 	}
 
 
 	return vidurkiai;
 }
 
-std::vector<double> med_skaiciavimas(std::vector<studentas> studentai)
+std::list<double> med_skaiciavimas(std::list<studentas> studentai)
 {
-	std::vector<double> medianos;
-	for (int i = 0; i < studentai.size(); i++)
+	std::list<double> medianos;
+	for (auto const& i : studentai)
 	{
 		std::cout << "Skaiciuojama mediana \n";
-		medianos.push_back(gal_mediana(studentai[i].iverciai.back(), studentai[i].iverciai));
+		medianos.push_back(gal_mediana(i.iverciai.back(), i.iverciai));
 	}
 
-
 	return medianos;
-
 }
 
-std::vector<studentas_sort> rusiavimas(std::vector<studentas> studentai, std::vector<double> vidurkiai, std::vector<double> medianos)
+std::list<studentas_sort> rusiavimas(std::list<studentas> studentai, std::list<double> vidurkiai, std::list<double> medianos)
 {
+	std::list<studentas_sort> stud_rus;
 
-
-	std::vector<studentas_sort> stud_rus;
-
-	for (int i = 0; i < studentai.size(); i++)
+	std::list<studentas>::iterator it1 = studentai.begin();
+	std::list<double>::iterator it2 = vidurkiai.begin();
+	std::list<double>::iterator it3 = medianos.begin();
+	
+	for (; it1 != studentai.end() && it2 != vidurkiai.end() && it3 != medianos.end(); ++it1, ++it2, ++it3)
 	{
-		stud_rus.push_back(studentas_sort{ studentai[i].vardai, studentai[i].pavardes, vidurkiai[i], medianos[i] });
+		stud_rus.push_back(studentas_sort{ it1->vardai, it1->pavardes, *it2, *it3 });
 	}
 
 	std::string var;
@@ -92,20 +93,19 @@ std::vector<studentas_sort> rusiavimas(std::vector<studentas> studentai, std::ve
 
 	if (var == "V")
 	{
-
-		std::sort(stud_rus.begin(), stud_rus.end(), compareV);
+		//stud_rus.sort();
 	}
 	else if (var == "P")
 	{
-		std::sort(stud_rus.begin(), stud_rus.end(), compareP);
+		//stud_rus.sort();
 	}
 
 	studentai.clear();
-	std::vector<studentas>().swap(studentai);
+	std::list<studentas>().swap(studentai);
 	vidurkiai.clear();
-	std::vector<double>().swap(vidurkiai);
+	std::list<double>().swap(vidurkiai);
 	medianos.clear();
-	std::vector<double>().swap(medianos);
+	std::list<double>().swap(medianos);
 
 	return stud_rus;
 }
@@ -113,7 +113,7 @@ std::vector<studentas_sort> rusiavimas(std::vector<studentas> studentai, std::ve
 
 void testas(std::string failo_pav, int irasu_sk, int testas)
 {
-	std::vector<studentas_sort> stud_sort;
+	std::list<studentas_sort> stud_sort;
 	std::ifstream infile;
 	//Nuskaitomas failas
 
@@ -121,7 +121,7 @@ void testas(std::string failo_pav, int irasu_sk, int testas)
 
 	auto start1 = std::chrono::high_resolution_clock::now();
 
-	std::vector<studentas> studentai = failo_nuskaitymas(failo_pav, infile);
+	std::list<studentas> studentai = failo_nuskaitymas(failo_pav, infile);
 
 	auto end1 = std::chrono::high_resolution_clock::now();
 
@@ -129,17 +129,15 @@ void testas(std::string failo_pav, int irasu_sk, int testas)
 
 	std::cout << "Failo is " << irasu_sk << " irasu nuskaitymas laikas " << diff.count() << " s\n";
 
-	for (int i = 1; i < studentai.size(); i++)
+	for (auto const& i : studentai)
 	{
-		stud_sort.push_back(studentas_sort{ studentai[i].vardai, studentai[i].pavardes, gal_rez(studentai[i].iverciai.back(), studentai[i].iverciai) ,  gal_mediana(studentai[i].iverciai.back(), studentai[i].iverciai) });
+		stud_sort.push_back(studentas_sort{ i.vardai, i.pavardes, gal_rez(i.iverciai.back(), i.iverciai) ,  gal_mediana(i.iverciai.back(), i.iverciai) });
 	}
-
-
 
 	//Issrusiuojama didejimo tvarka
 	auto start2 = std::chrono::high_resolution_clock::now();
 
-	std::sort(stud_sort.begin(), stud_sort.end(), compareAVG);
+	stud_sort.sort(CompareAvg());
 
 	auto end2 = std::chrono::high_resolution_clock::now();
 
@@ -149,18 +147,15 @@ void testas(std::string failo_pav, int irasu_sk, int testas)
 
 	//Suskirstoma i nuskriaustuosius ir galvocius
 
-	std::vector<nuskriaustieji> nus;
-	std::vector<galvociai> gal;
+	std::list<nuskriaustieji> nus;
+	std::list<galvociai> gal;
 
 	auto start3 = std::chrono::high_resolution_clock::now();
-	//for(int i=0; i< )
+
 	for (auto& it : stud_sort) {
 		if (it.vidurkiai < 5)
 		{
-
 			nus.push_back(nuskriaustieji{ it.vardai, it.pavardes, it.vidurkiai });
-		
-
 		}
 		else if (it.vidurkiai >= 5)
 		{
@@ -204,13 +199,14 @@ void testas(std::string failo_pav, int irasu_sk, int testas)
 	//std::cout << "Failo is " << irasu_sk << " Testo nr " << testas <<" rezultatas " << diff5.count() << " s\n";
 
 	nus.clear();
-	std::vector<nuskriaustieji>().swap(nus);
+	
+	std::list<nuskriaustieji>().swap(nus);
 	gal.clear();
-	std::vector<galvociai>().swap(gal);
+	std::list<galvociai>().swap(gal);
 	studentai.clear();
-	std::vector<studentas>().swap(studentai);
+	std::list<studentas>().swap(studentai);
 	stud_sort.clear();
-	std::vector<studentas_sort>().swap(stud_sort);
+	std::list<studentas_sort>().swap(stud_sort);
 
 }
 
@@ -224,6 +220,3 @@ bool isNumber(std::string s)
 	return true;
 }
 
-bool compareV(studentas_sort& a, studentas_sort& b) { return a.vardai < b.vardai; };
-bool compareP(studentas_sort& a, studentas_sort& b) { return a.pavardes < b.pavardes; };
-bool compareAVG(studentas_sort& a, studentas_sort& b) { return a.vidurkiai < b.vidurkiai; };

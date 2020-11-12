@@ -2,30 +2,29 @@
 #include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\funkcijos.h"
 #include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\strukturos.h"
 
-void atsp_rez(std::vector<std::string> vardai, std::vector<std::string> pavardes, std::vector<double> galutiniai)
+void atsp_rez(std::list<std::string> vardai, std::list<std::string> pavardes, std::list<double> galutiniai)
 {
 	std::cout << std::setw(25) << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis" << std::endl;
 	std::cout << "---------------------------------------------------------------------------------\n";
 	for (int i = 0; i < vardai.size(); i++) {
 
-		std::cout << std::setw(25) << vardai[i] << std::setw(25) << pavardes[i] << std::setw(25) << std::fixed << std::setprecision(2) << galutiniai[i] << std::endl;
+		//std::cout << std::setw(25) << vardai[i] << std::setw(25) << pavardes[i] << std::setw(25) << std::fixed << std::setprecision(2) << galutiniai[i] << std::endl;
 
 	}
 }
 
-std::vector<studentas> failo_nuskaitymas(std::string failo_pav, std::ifstream& infile)
+std::list<studentas> failo_nuskaitymas(std::string failo_pav, std::ifstream& infile)
 {
-	std::vector<studentas> studentai;
+	std::list<studentas> studentai;
 
 	std::string vardas_i, pavarde_i, vardas, pavarde;
 
-	std::vector<int> patikrinti;
+	std::list<int> patikrinti;
 
 	int rows = 0, cols = 0;
 	std::string eilute, reiksme;
 
 	infile.open(failo_pav);
-
 
 	// while ciklas skirtas suzinoti, kiek failas turi eiluciu ir stulpeliu
 	while (std::getline(infile, eilute)) {
@@ -41,10 +40,14 @@ std::vector<studentas> failo_nuskaitymas(std::string failo_pav, std::ifstream& i
 	infile.open(failo_pav);
 
 	std::string rez;
-	std::vector<std::string> visi_rezultatai;
+	std::list<std::string> visi_rezultatai;
 
 	std::getline(infile, eilute);
+
 	// nuskaitoma likusi dokumento dalis (be etikeciu, tik duomenys)
+
+
+
 	for (int i = 1; i < rows; i++)
 	{
 		infile >> vardas >> pavarde;
@@ -54,23 +57,22 @@ std::vector<studentas> failo_nuskaitymas(std::string failo_pav, std::ifstream& i
 			infile >> rez;
 			visi_rezultatai.push_back(rez);
 
-			for (int i = 0; i < visi_rezultatai.size(); i++)
-			{
-				if (!isNumber(visi_rezultatai[i]))
+			for (auto const& i : visi_rezultatai) {
+				if (!isNumber(i))
 				{
 					std::cout << "Klaida: faile rezultatu vietose yra raides! \n";
 				}
 				else
 				{
-					patikrinti.push_back(std::stoi(visi_rezultatai[i]));
+					patikrinti.push_back(stoi(i));
 				}
-				visi_rezultatai.clear();
-				std::vector<std::string>().swap(visi_rezultatai);
 			}
+			visi_rezultatai.clear();
+			std::list<std::string>().swap(visi_rezultatai);
 		}
 		studentai.push_back(studentas{ vardas, pavarde, patikrinti });
 		patikrinti.clear();
-		std::vector<int>().swap(patikrinti);
+		std::list<int>().swap(patikrinti);
 	}
 	infile.close();
 
@@ -79,7 +81,7 @@ std::vector<studentas> failo_nuskaitymas(std::string failo_pav, std::ifstream& i
 }
 
 
-void rasymas_i_faila_kursiokiai(std::vector<studentas_sort> vector, std::string failo_pav)
+void rasymas_i_faila_kursiokiai(std::list<studentas_sort> list, std::string failo_pav)
 {
 
 	std::ofstream myfile;
@@ -93,15 +95,15 @@ void rasymas_i_faila_kursiokiai(std::vector<studentas_sort> vector, std::string 
 	{
 		myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << std::fixed << std::setprecision(2) << "Galutinis(Vid.)" << std::setw(25) << std::fixed << std::setprecision(2) << "Galutinis(Med.)" << "\n";
 	}
-	for (int i = 0; i < vector.size(); i++)
+	for (auto const& i : list)
 	{
 
-		myfile << vector[i].vardai << std::setw(25) << vector[i].pavardes << std::setw(25) << vector[i].vidurkiai << std::setw(25) << vector[i].medianos << "\n";
+		myfile << i.vardai << std::setw(25) << i.pavardes << std::setw(25) << i.vidurkiai << std::setw(25) << i.medianos << "\n";
 	}
 
 	myfile.close();
-	vector.clear();
-	std::vector<studentas_sort>().swap(vector);
+	list.clear();
+	std::list<studentas_sort>().swap(list);
 }
 
 void rasymas_i_faila_nuskriaustieji(std::vector<nuskriaustieji> nus, std::string failo_pav)
@@ -253,25 +255,25 @@ void failu_generavimas()
 	//}
 	//failas4.close();
 
-	//10000000 duomenu failo generavimas
-	std::ofstream failas5("stud10000000.txt");
+	////10000000 duomenu failo generavimas
+	//std::ofstream failas5("stud10000000.txt");
 
-	failas5 << "Vardas" << std::setw(25) << "Pavarde";
-	for (int count = 0; count < kiek_nd; count++) {
-		failas5 << std::setw(25) << "ND" << kiek_nd_rez[count];
-	}
-	failas5 << std::setw(25) << "EGZ" << std::endl;
+	//failas5 << "Vardas" << std::setw(25) << "Pavarde";
+	//for (int count = 0; count < kiek_nd; count++) {
+	//	failas5 << std::setw(25) << "ND" << kiek_nd_rez[count];
+	//}
+	//failas5 << std::setw(25) << "EGZ" << std::endl;
 
-	for (int i = 1; i < 10000001; i++)
-	{
+	//for (int i = 1; i < 10000001; i++)
+	//{
 
-		failas5 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
-		for (int j = 0; j < kiek_nd + 1; j++)
-		{
-			failas5 << std::setw(25) << dist(mt) << std::setw(25);
-		}
-		failas5 << "\n";
-	}
-	failas5.close();
+	//	failas5 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
+	//	for (int j = 0; j < kiek_nd + 1; j++)
+	//	{
+	//		failas5 << std::setw(25) << dist(mt) << std::setw(25);
+	//	}
+	//	failas5 << "\n";
+	//}
+	//failas5.close();
 }
 
