@@ -4,9 +4,9 @@
 // Pridetas duomenu skaitymas is .txt failo, realizuotas rusiavimas bei duomenu rasymas i .txt faila.
 // v0.3 uzduotis, is main'o i .h failus iskeltos funkcijos, strukturos, naudojamos bibliotekos bei aprasyti kintamieji. Taip pat programa papildyta try {} catch {}.
 
-#include "funkcijos.h"
-#include "outputai.h"
-#include "strukturos.h"
+#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\funkcijos.h"
+#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\outputai.h"
+#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\strukturos.h"
 
 int main()
 {
@@ -28,7 +28,7 @@ int main()
 	std::string failo_pav1;
 	std::ifstream infile1;
 
-
+	/*
 
 	do {
 		try {
@@ -292,19 +292,18 @@ int main()
 			atsp_rez(vardai, pavardes, galutiniai);
 		}
 	}
+	*/
 
 	std::string failo_pav;
 	std::ifstream infile;
 
 	//Generuojami failai
-	failu_generavimas();
-
-	
+	//failu_generavimas();
+		
 	testas("stud1000.txt", 1000, 1);
 	testas("stud10000.txt", 10000, 2);
-	/*testas("stud100000.txt", 100000, 3);
+	testas("stud100000.txt", 100000, 3);
 	testas("stud1000000.txt", 1000000, 4);
-	testas("stud10000000.txt", 10000000, 5);*/
+	testas("stud10000000.txt", 10000000, 5);
 
 }
-

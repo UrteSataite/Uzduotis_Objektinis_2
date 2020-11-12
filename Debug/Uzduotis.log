@@ -1,8 +1,13 @@
 ﻿  funkcijos.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(8,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(41,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(54,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(71,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(129,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(197,20): warning C4018: '<': signed/unsigned mismatch
-  Uzduotis.vcxproj -> C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Debug\Uzduotis.exe
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(132,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(220,20): warning C4018: '<': signed/unsigned mismatch
+  outputai.cpp
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(57,22): warning C4018: '<': signed/unsigned mismatch
+  Uzduotis.cpp
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,17): warning C4101: 'tmp': unreferenced local variable
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(22,6): warning C4101: 'egzaminai': unreferenced local variable
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,22): warning C4101: 'tmp2': unreferenced local variable
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,6): warning C4101: 'sk': unreferenced local variable
+  Generating Code...
+funkcijos.obj : error LNK2019: unresolved external symbol "double __cdecl gal_mediana(int,class std::vector<int,class std::allocator<int> >)" (?gal_mediana@@YANHV?$vector@HV?$allocator@H@std@@@std@@@Z) referenced in function "void __cdecl testas(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?testas@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Debug\Uzduotis.exe : fatal error LNK1120: 1 unresolved externals
