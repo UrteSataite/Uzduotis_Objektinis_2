@@ -1,7 +1,0 @@
-﻿  funkcijos.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(1,10): fatal error C1083: Cannot open include file: 'funkcijos.h': No such file or directory
-  outputai.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(1,10): fatal error C1083: Cannot open include file: 'outputai.h': No such file or directory
-  Uzduotis.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(7,10): fatal error C1083: Cannot open include file: 'funkcijos.h': No such file or directory
-  Generating Code...
