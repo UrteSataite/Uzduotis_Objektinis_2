@@ -1,38 +1,53 @@
 
-#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\funkcijos.h"
-#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\outputai.h"
-#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\strukturos.h"
+#include "funkcijos.h"
+#include "outputai.h"
+#include "strukturos.h"
+
+#include "funkcijos_v.h"
+#include "outputai_v.h"
+#include "strukturos_v.h"
 
 int main()
 {
-
-	int sk, egr{}, tmp, tmp2;
-	std::list<int> nd_rez;
-	std::list<std::string> vardai;
-	std::list<std::string> pavardes;
-	std::list<double> galutiniai;
-	std::list<double> galutiniai2;
-	std::string vardas, pavarde, vardas_i, pavarde_i;
-	std::string mv;
-	int egzaminai;
-	std::string opt;
-	std::string ats;
-	std::string ats2;
-	std::string tn;
-	std::string tn2;
-	std::string failo_pav1;
-	std::ifstream infile1;
-
 	std::string failo_pav;
 	std::ifstream infile;
 
 	//Generuojami failai
 	//failu_generavimas();
-		
-	testas("stud1000.txt", 1000, 1);
-	testas("stud10000.txt", 10000, 2);
-	testas("stud100000.txt", 100000, 3);
-	testas("stud1000000.txt", 1000000, 4);
-	testas("stud10000000.txt", 10000000, 5);
+
+	std::string konteineris;
+	do
+	{
+		try {
+			std::cout << "Naudoti std::list ar std::vector konteineri? L/V" << std::endl;
+			std::cin >> konteineris;
+			std::cout << "\n";
+			if (konteineris != "L" && konteineris != "V") {
+				throw std::runtime_error("Neteisingas pasirinkimas! Galima pasirinkti L(list) arba V(vector)!");
+			}
+		}
+		catch (std::runtime_error& a) {
+			std::cout << a.what() << std::endl;
+			std::cout << "Jusu pasirinkimas: " << konteineris << std::endl;
+			std::cout << "Pasirinkite dar karta." << std::endl;
+		}
+	} while (konteineris != "L" && konteineris != "V");
+	
+	if (konteineris == "L")
+	{
+		testas_list("stud1000.txt", 1000, 1);
+		testas_list("stud10000.txt", 10000, 2);
+		testas_list("stud100000.txt", 100000, 3);
+		testas_list("stud1000000.txt", 1000000, 4);
+		testas_list("stud10000000.txt", 10000000, 5);
+	}
+	else
+	{
+		vec_testas("stud1000.txt", 1000, 1);
+		vec_testas("stud10000.txt", 10000, 2);
+		vec_testas("stud100000.txt", 100000, 3);
+		vec_testas("stud1000000.txt", 1000000, 4);
+		vec_testas("stud10000000.txt", 10000000, 5);
+	}
 
 }

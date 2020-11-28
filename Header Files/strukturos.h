@@ -19,17 +19,15 @@
 #include <chrono>
 #include <list>
 
-
 struct studentas
 {
     std::string vardai;
     std::string pavardes;
     std::list<int> iverciai;
-
-
 };
 
 //STRUKTURA UZDUOCIAI V0.2 VERSIJAI
+
 struct studentas_sort
 {
     std::string vardai;
@@ -37,7 +35,6 @@ struct studentas_sort
     double vidurkiai;
     double medianos;
 };
-
 
 struct nuskriaustieji
 {

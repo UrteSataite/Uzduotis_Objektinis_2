@@ -1,13 +1,67 @@
-﻿  funkcijos.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(132,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(220,20): warning C4018: '<': signed/unsigned mismatch
+﻿  Uzduotis.cpp
+  funkcijos.cpp
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(221,20): warning C4018: '<': signed/unsigned mismatch
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,14): error C2672: 'operator __surrogate_func': no matching overloaded function found
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1543): message : see reference to function template instantiation 'bool std::_Debug_lt_pred<_Pr2&,_Value_type&,_Value_type&,0>(_Pr,_Ty1,_Ty2) noexcept(<expr>)' being compiled
+          with
+          [
+              _Pr2=std::less<void>,
+              _Value_type=studentas_sort,
+              _Pr=std::less<void> &,
+              _Ty1=studentas_sort &,
+              _Ty2=studentas_sort &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\list(570): message : see reference to function template instantiation 'std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *std::_List_val<std::_List_simple_types<_Ty>>::_Merge_same<_Pr2>(std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *,std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *,std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *const ,_Pr2)' being compiled
+          with
+          [
+              _Ty=studentas_sort,
+              _Alloc=std::allocator<studentas_sort>,
+              _Pr2=std::less<void>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\list(570): message : see reference to function template instantiation 'std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *std::_List_val<std::_List_simple_types<_Ty>>::_Merge_same<_Pr2>(std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *,std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *,std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *const ,_Pr2)' being compiled
+          with
+          [
+              _Ty=studentas_sort,
+              _Alloc=std::allocator<studentas_sort>,
+              _Pr2=std::less<void>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\list(1716): message : see reference to function template instantiation 'std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *std::_List_val<std::_List_simple_types<_Ty>>::_Sort<_Fn>(std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *&,const unsigned int,_Pr2)' being compiled
+          with
+          [
+              _Ty=studentas_sort,
+              _Alloc=std::allocator<studentas_sort>,
+              _Fn=std::less<void>,
+              _Pr2=std::less<void>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\list(1716): message : see reference to function template instantiation 'std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *std::_List_val<std::_List_simple_types<_Ty>>::_Sort<_Fn>(std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *&,const unsigned int,_Pr2)' being compiled
+          with
+          [
+              _Ty=studentas_sort,
+              _Alloc=std::allocator<studentas_sort>,
+              _Fn=std::less<void>,
+              _Pr2=std::less<void>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\list(1710): message : see reference to function template instantiation 'void std::list<studentas_sort,std::allocator<studentas_sort>>::sort<std::less<void>>(_Pr2)' being compiled
+          with
+          [
+              _Pr2=std::less<void>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\list(1710): message : see reference to function template instantiation 'void std::list<studentas_sort,std::allocator<studentas_sort>>::sort<std::less<void>>(_Pr2)' being compiled
+          with
+          [
+              _Pr2=std::less<void>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\list(1709): message : while compiling class template member function 'void std::list<studentas_sort,std::allocator<studentas_sort>>::sort(void)'
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(95): message : see reference to function template instantiation 'void std::list<studentas_sort,std::allocator<studentas_sort>>::sort(void)' being compiled
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\funkcijos.cpp(64): message : see reference to class template instantiation 'std::list<studentas_sort,std::allocator<studentas_sort>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,1): error C2893: Failed to specialize function template 'unknown-type std::less<void>::operator ()(_Ty1 &&,_Ty2 &&) noexcept(<expr>) const'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xstddef(237): message : see declaration of 'std::less<void>::operator ()'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,1): message : With the following template arguments:
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,1): message : '_Ty1=_Value_type &'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,1): message : '_Ty2=_Value_type &'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,5): error C2056: illegal expression
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,48): error C2672: 'operator __surrogate_func': no matching overloaded function found
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(1544,39): error C2056: illegal expression
   outputai.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(57,22): warning C4018: '<': signed/unsigned mismatch
-  Uzduotis.cpp
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,17): warning C4101: 'tmp': unreferenced local variable
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(22,6): warning C4101: 'egzaminai': unreferenced local variable
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,22): warning C4101: 'tmp2': unreferenced local variable
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Uzduotis.cpp(14,6): warning C4101: 'sk': unreferenced local variable
+C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\outputai.cpp(9,20): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-funkcijos.obj : error LNK2019: unresolved external symbol "double __cdecl gal_mediana(int,class std::vector<int,class std::allocator<int> >)" (?gal_mediana@@YANHV?$vector@HV?$allocator@H@std@@@std@@@Z) referenced in function "void __cdecl testas(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?testas@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
-C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Debug\Uzduotis.exe : fatal error LNK1120: 1 unresolved externals

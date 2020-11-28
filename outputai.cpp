@@ -1,6 +1,6 @@
-#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\outputai.h"
-#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\funkcijos.h"
-#include "C:\Users\urte.LAPTOP-6PGCDFBJ\Desktop\3 sem\Objektinis programavimas\Uzduotis_1Dalis\Uzduotis\Header Files\strukturos.h"
+#include "outputai.h"
+#include "funkcijos.h"
+#include "strukturos.h"
 
 void atsp_rez(std::list<std::string> vardai, std::list<std::string> pavardes, std::list<double> galutiniai)
 {
@@ -46,8 +46,6 @@ std::list<studentas> failo_nuskaitymas(std::string failo_pav, std::ifstream& inf
 
 	// nuskaitoma likusi dokumento dalis (be etikeciu, tik duomenys)
 
-
-
 	for (int i = 1; i < rows; i++)
 	{
 		infile >> vardas >> pavarde;
@@ -76,10 +74,8 @@ std::list<studentas> failo_nuskaitymas(std::string failo_pav, std::ifstream& inf
 	}
 	infile.close();
 
-
 	return studentai;
 }
-
 
 void rasymas_i_faila_kursiokiai(std::list<studentas_sort> list, std::string failo_pav)
 {
@@ -106,7 +102,7 @@ void rasymas_i_faila_kursiokiai(std::list<studentas_sort> list, std::string fail
 	std::list<studentas_sort>().swap(list);
 }
 
-void rasymas_i_faila_nuskriaustieji(std::vector<nuskriaustieji> nus, std::string failo_pav)
+void rasymas_i_faila_nuskriaustieji(std::list<nuskriaustieji> nus, std::string failo_pav)
 {
 	std::ofstream myfile;
 	myfile.open(failo_pav);
@@ -119,14 +115,14 @@ void rasymas_i_faila_nuskriaustieji(std::vector<nuskriaustieji> nus, std::string
 	{
 		myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis(Vid.)" << "\n";
 	}
-	for (int i = 0; i < nus.size(); i++)
+	for (auto const& i : nus)
 	{
-		myfile << nus[i].vardai << std::setw(25) << nus[i].pavardes << std::setw(25) << nus[i].iverciai << "\n";
+		myfile << i.vardai << std::setw(25) << i.pavardes << std::setw(25) << i.iverciai << "\n";
 	}
 
 }
 
-void rasymas_i_faila_galvociai(std::vector<galvociai> gal, std::string failo_pav)
+void rasymas_i_faila_galvociai(std::list<galvociai> gal, std::string failo_pav)
 {
 	std::ofstream myfile;
 	myfile.open(failo_pav);
@@ -139,9 +135,9 @@ void rasymas_i_faila_galvociai(std::vector<galvociai> gal, std::string failo_pav
 		myfile << "Vardas" << std::setw(25) << "Pavarde" << std::setw(25) << "Galutinis(Vid.)" << "\n";
 	}
 
-	for (int i = 0; i < gal.size(); i++)
+	for (auto const& i : gal)
 	{
-		myfile << gal[i].vardai << std::setw(25) << gal[i].pavardes << std::setw(25) << gal[i].iverciai << "\n";
+		myfile << i.vardai << std::setw(25) << i.pavardes << std::setw(25) << i.iverciai << "\n";
 	}
 
 }
@@ -164,116 +160,111 @@ void failu_generavimas()
 		kiek_nd_rez.push_back(i);
 	}
 
+	//1000 duomenu failo generavimas
+	std::ofstream failas1;
+	failas1.open("stud1000.txt");
 
+	failas1 << "Vardas" << std::setw(25) << "Pavarde";
+	for (int count = 0; count < kiek_nd; count++) {
+		failas1 << std::setw(25) << "ND" << kiek_nd_rez[count];
+	}
+	failas1 << std::setw(25) << "EGZ" << std::endl;
 
-	////1000 duomenu failo generavimas
-	//std::ofstream failas1;
-	//failas1.open("stud1000.txt");
+	for (int i = 1; i < 1001; i++)
+	{
 
-	//failas1 << "Vardas" << std::setw(25) << "Pavarde";
-	//for (int count = 0; count < kiek_nd; count++) {
-	//	failas1 << std::setw(25) << "ND" << kiek_nd_rez[count];
-	//}
-	//failas1 << std::setw(25) << "EGZ" << std::endl;
+		failas1 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
 
-	//for (int i = 1; i < 1001; i++)
-	//{
+		for (int j = 0; j < kiek_nd + 1; j++)
+		{
+			failas1 << std::setw(25) << dist(mt) << std::setw(25);
+		}
+		failas1 << "\n";
+	}
+	failas1.close();
 
-	//	failas1 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
+	//10000 duomenu failo generavimas
+	std::ofstream failas2("stud10000.txt");
 
-	//	for (int j = 0; j < kiek_nd + 1; j++)
-	//	{
-	//		failas1 << std::setw(25) << dist(mt) << std::setw(25);
-	//	}
-	//	failas1 << "\n";
-	//}
-	//failas1.close();
+	failas2 << "Vardas" << std::setw(25) << "Pavarde";
+	for (int count = 0; count < kiek_nd; count++) {
+		failas2 << std::setw(25) << "ND" << kiek_nd_rez[count];
+	}
+	failas2 << std::setw(25) << "EGZ" << std::endl;
 
-	////10000 duomenu failo generavimas
-	//std::ofstream failas2("stud10000.txt");
+	for (int i = 1; i < 10001; i++)
+	{
 
-	//failas2 << "Vardas" << std::setw(25) << "Pavarde";
-	//for (int count = 0; count < kiek_nd; count++) {
-	//	failas2 << std::setw(25) << "ND" << kiek_nd_rez[count];
-	//}
-	//failas2 << std::setw(25) << "EGZ" << std::endl;
+		failas2 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
 
-	//for (int i = 1; i < 10001; i++)
-	//{
+		for (int j = 0; j < kiek_nd + 1; j++)
+		{
+			failas2 << std::setw(25) << dist(mt) << std::setw(25);
+		}
+		failas2 << "\n";
+	}
+	failas2.close();
 
-	//	failas2 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
+	//100000 duomenu failo generavimas
+	std::ofstream failas3("stud100000.txt");
 
-	//	for (int j = 0; j < kiek_nd + 1; j++)
-	//	{
-	//		failas2 << std::setw(25) << dist(mt) << std::setw(25);
-	//	}
-	//	failas2 << "\n";
-	//}
-	//failas2.close();
+	failas3 << "Vardas" << std::setw(25) << "Pavarde";
+	for (int count = 0; count < kiek_nd; count++) {
+		failas3 << std::setw(25) << "ND" << kiek_nd_rez[count];
+	}
+	failas3 << std::setw(25) << "EGZ" << std::endl;
 
-	//////100000 duomenu failo generavimas
-	//std::ofstream failas3("stud100000.txt");
+	for (int i = 1; i < 100001; i++)
+	{
+		failas3 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
 
-	//failas3 << "Vardas" << std::setw(25) << "Pavarde";
-	//for (int count = 0; count < kiek_nd; count++) {
-	//	failas3 << std::setw(25) << "ND" << kiek_nd_rez[count];
-	//}
-	//failas3 << std::setw(25) << "EGZ" << std::endl;
-
-	//for (int i = 1; i < 100001; i++)
-	//{
-
-	//	failas3 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
-
-	//	for (int j = 0; j < kiek_nd + 1; j++)
-	//	{
-	//		failas3 << std::setw(25) << dist(mt) << std::setw(25);
-	//	}
-	//	failas3 << "\n";
-	//}
+		for (int j = 0; j < kiek_nd + 1; j++)
+		{
+			failas3 << std::setw(25) << dist(mt) << std::setw(25);
+		}
+		failas3 << "\n";
+	}
 	//failas3.close();
 
-	////1000000 duomenu failo generavimas
-	//std::ofstream failas4("stud1000000.txt");
+	//1000000 duomenu failo generavimas
+	std::ofstream failas4("stud1000000.txt");
 
-	//failas4 << "Vardas" << std::setw(25) << "Pavarde";
-	//for (int count = 0; count < kiek_nd; count++) {
-	//	failas4 << std::setw(25) << "ND" << kiek_nd_rez[count];
-	//}
-	//failas4 << std::setw(25) << "EGZ" << std::endl;
+	failas4 << "Vardas" << std::setw(25) << "Pavarde";
+	for (int count = 0; count < kiek_nd; count++) {
+		failas4 << std::setw(25) << "ND" << kiek_nd_rez[count];
+	}
+	failas4 << std::setw(25) << "EGZ" << std::endl;
 
-	//for (int i = 1; i < 1000001; i++)
-	//{
+	for (int i = 1; i < 1000001; i++)
+	{
+		failas4 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
 
-	//	failas4 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
+	for (int j = 0; j < kiek_nd + 1; j++)
+		{
+			failas4 << std::setw(25) << dist(mt) << std::setw(25);
+		}
+		failas4 << "\n";
+	}
+	failas4.close();
 
-	//	for (int j = 0; j < kiek_nd + 1; j++)
-	//	{
-	//		failas4 << std::setw(25) << dist(mt) << std::setw(25);
-	//	}
-	//	failas4 << "\n";
-	//}
-	//failas4.close();
+	//10000000 duomenu failo generavimas
+	std::ofstream failas5("stud10000000.txt");
 
-	////10000000 duomenu failo generavimas
-	//std::ofstream failas5("stud10000000.txt");
+	failas5 << "Vardas" << std::setw(25) << "Pavarde";
+	for (int count = 0; count < kiek_nd; count++) {
+		failas5 << std::setw(25) << "ND" << kiek_nd_rez[count];
+	}
+	failas5 << std::setw(25) << "EGZ" << std::endl;
 
-	//failas5 << "Vardas" << std::setw(25) << "Pavarde";
-	//for (int count = 0; count < kiek_nd; count++) {
-	//	failas5 << std::setw(25) << "ND" << kiek_nd_rez[count];
-	//}
-	//failas5 << std::setw(25) << "EGZ" << std::endl;
-
-	//for (int i = 1; i < 10000001; i++)
-	//{
-
-	//	failas5 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
-	//	for (int j = 0; j < kiek_nd + 1; j++)
-	//	{
-	//		failas5 << std::setw(25) << dist(mt) << std::setw(25);
-	//	}
-	//	failas5 << "\n";
-	//}
-	//failas5.close();
+	for (int i = 1; i < 10000001; i++)
+	{
+		failas5 << "Vardas" << i << std::setw(25) << "Pavarde" << i;
+		for (int j = 0; j < kiek_nd + 1; j++)
+		{
+			failas5 << std::setw(25) << dist(mt) << std::setw(25);
+		}
+		failas5 << "\n";
+	}
+	failas5.close();
 }
 
