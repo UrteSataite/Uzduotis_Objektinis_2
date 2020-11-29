@@ -34,15 +34,7 @@ struct vec_studentas_sort
     double vec_medianos;
 };
 
-
 struct vec_nuskriaustieji
-{
-    std::string vec_vardai;
-    std::string vec_pavardes;
-    double vec_iverciai;
-};
-
-struct vec_galvociai
 {
     std::string vec_vardai;
     std::string vec_pavardes;

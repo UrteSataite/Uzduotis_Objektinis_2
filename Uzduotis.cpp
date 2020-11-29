@@ -1,3 +1,22 @@
+/* Programos v1.0 realizuota naudojant 2 strategija: panaudojant tik viena nauja konteineri : "vargsiukai". T.y.studentai, kuriu vidurkis yra < 5, yra perkeliami i nauja
+konteineri, bei istrinami is senojo, naudojant algoritma remove_if bei erase(vektoriaus atjevu). Pastarajame lieka tik tie studentai, kuriu vidurkis yra > 5.
+
+Projekto/programos stuktura:
+* Uzduotis.cpp (main cpp failas);
+* Failu generavimui: failu_generavivmas.cpp, failu_generavimas.h;
+* Darbui su std::vector tipo konteineriu: funkcijos_v.cpp, funkcijos_v.h, outputai_v.cpp, outputai_v.h, sturukturos_v.h;
+* Darbui su std::list tipo konteineriu: funkcijos.cpp, funkcijos.h, outputai.cpp, outputai.h, sturukturos.h;
+
+Programos veikimo principas: 
+* Varototojas pradzioje gali pasirinkti, koki konteinerio tipa nori naudoti programoje. 
+* Priklausomai nuo vartotojo pasirinkimo, is pries tai sugeneruotu 5 skirtingo dydzio duomenu failu nuskaitomi duomenys ir patalpinami std::vector arba std::list. 
+* Atliekami programos veikimo bei spartos testai, matuojamas laikas.
+* Testo rezultatai spausdinami ekrane.
+
+Failu generavimas:
+Failai generuojami naudojant std::vector konteineri. Generavimas iskvieciamas Uzduotis.cpp faile.
+(Buvo naudojami anksciau sugeneruoti failai, todel funkcijos iskvietimas uzkomentuotas)
+*/
 
 #include "funkcijos.h"
 #include "outputai.h"
@@ -7,11 +26,10 @@
 #include "outputai_v.h"
 #include "strukturos_v.h"
 
+#include "failu_generavimas.h"
+
 int main()
 {
-	std::string failo_pav;
-	std::ifstream infile;
-
 	//Generuojami failai
 	//failu_generavimas();
 
@@ -41,7 +59,7 @@ int main()
 		testas_list("stud1000000.txt", 1000000, 4);
 		testas_list("stud10000000.txt", 10000000, 5);
 	}
-	else
+	else if (konteineris == "V")
 	{
 		vec_testas("stud1000.txt", 1000, 1);
 		vec_testas("stud10000.txt", 10000, 2);

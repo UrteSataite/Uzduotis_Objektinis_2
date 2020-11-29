@@ -2,11 +2,17 @@
 #include "strukturos.h"
 #include "outputai.h"
 
+// Funkcijos, reikalingos sort veikimui. Palyginami vidurkiai, vardai, pavardes
 bool compareAVG(studentas_sort* a, studentas_sort* b) { return a->vidurkiai < b->vidurkiai; };
-bool compareV(studentas_sort* a, studentas_sort* b) { return a->vardai < b->vardai; };
-bool compareP(studentas_sort* a, studentas_sort* b) { return a->pavardes < b->pavardes; };
 
-double gal_mediana(int egr, std::list<int> nd_rez)
+// 2 stratedijos igyvendinimo dalis. Funkcija grazina tuos listo elementus, kuriu vidurkis mazesnis nei 5
+bool listo_salyga(const studentas_sort& listas)
+{
+	return listas.vidurkiai < 5;
+}
+
+// Funkcija, skaiciuojanti galutines medianos reiksmes
+double medianos_skaiciavimas(int egr, std::list<int> nd_rez)
 {
 	std::vector<double> eilute;
 	for (auto const& i : eilute) {
@@ -25,7 +31,8 @@ double gal_mediana(int egr, std::list<int> nd_rez)
 	}
 }
 
-double gal_rez(int egr, std::list<int> nd_rez)
+// Funkcija, skaiciuojanti vidurki ir galutini bala
+double balo_skaiciavimas(int egr, std::list<int> nd_rez)
 {
 	double vidurkis, galutinis1;
 
@@ -35,36 +42,38 @@ double gal_rez(int egr, std::list<int> nd_rez)
 	return galutinis1;
 }
 
-std::list<double> vid_skaiciavimas(std::list<studentas> studentai)
+// Funckija, irasanti vidurkiu reiksmes studentams
+std::list<double> vidurkiai_funkcija(std::list<studentas> studentai)
 {
 	std::list<double> vidurkiai;
 	for (auto const& i : studentai)
 	{
 		std::cout << "Skaiciuojamas vidurkis \n";
-		vidurkiai.push_back(gal_rez(i.iverciai.back(), i.iverciai));
+		vidurkiai.push_back(balo_skaiciavimas(i.iverciai.back(), i.iverciai));
 	}
-
 
 	return vidurkiai;
 }
 
-std::list<double> med_skaiciavimas(std::list<studentas> studentai)
+// Funckija, irasanti medianos reiksmes studentams 
+std::list<double> medianos_funkcija(std::list<studentas> studentai)
 {
 	std::list<double> medianos;
 	for (auto const& i : studentai)
 	{
 		std::cout << "Skaiciuojama mediana \n";
-		medianos.push_back(gal_mediana(i.iverciai.back(), i.iverciai));
+		medianos.push_back(medianos_skaiciavimas(i.iverciai.back(), i.iverciai));
 	}
 
 	return medianos;
 }
 
+// Programos testavimo funkcija
 void testas_list(std::string failo_pav, int irasu_sk, int testas)
 {
-
 	std::list<studentas_sort> stud_sort;
 
+	// Patikrinimas, ar egzistuoja norimas testuoti failas. 
 	std::ifstream infile(failo_pav);
 	if (infile.fail()) {
 		std::cout << "KLAIDA: failas tokiu pavadinimu neegzistuoja! \n" << std::endl;
@@ -75,6 +84,7 @@ void testas_list(std::string failo_pav, int irasu_sk, int testas)
 
 		auto startas = std::chrono::high_resolution_clock::now();
 
+		// Failo nuskaitymas
 		auto start1 = std::chrono::high_resolution_clock::now();
 
 		std::list<studentas> studentai = failo_nuskaitymas(failo_pav, infile);
@@ -85,12 +95,13 @@ void testas_list(std::string failo_pav, int irasu_sk, int testas)
 
 		std::cout << "Failo is " << irasu_sk << " irasu nuskaitymas laikas " << diff.count() << " s\n";
 
+		// Duomenu surasymas i stud_sort lista
 		for (auto const& i : studentai)
 		{
-			stud_sort.push_back(studentas_sort{ i.vardai, i.pavardes, gal_rez(i.iverciai.back(), i.iverciai) ,  gal_mediana(i.iverciai.back(), i.iverciai) });
+			stud_sort.push_back(studentas_sort{ i.vardai, i.pavardes, balo_skaiciavimas(i.iverciai.back(), i.iverciai) ,  medianos_skaiciavimas(i.iverciai.back(), i.iverciai) });
 		}
 
-		//Issrusiuojama didejimo tvarka
+		// Issrusiuojama didejimo tvarka
 		auto start2 = std::chrono::high_resolution_clock::now();
 
 		stud_sort.sort(CompareAvg());
@@ -101,10 +112,9 @@ void testas_list(std::string failo_pav, int irasu_sk, int testas)
 
 		std::cout << "Failo is " << irasu_sk << " irasu isrusiavimo didejimo tvarka laikas " << diff1.count() << " s\n";
 
-		//Suskirstoma i nuskriaustuosius ir galvocius
+		//Suskirstoma dvi grupes: i nuskriaustuosius ir galvocius. Nuskriaustieji perkeliami i kita lista, istrinami is stud_sort
 
 		std::list<nuskriaustieji> nus;
-		std::list<galvociai> gal;
 
 		auto start3 = std::chrono::high_resolution_clock::now();
 
@@ -113,11 +123,9 @@ void testas_list(std::string failo_pav, int irasu_sk, int testas)
 			{
 				nus.push_back(nuskriaustieji{ it.vardai, it.pavardes, it.vidurkiai });
 			}
-			else if (it.vidurkiai >= 5)
-			{
-				gal.push_back(galvociai{ it.vardai, it.pavardes, it.vidurkiai });
-			}
 		}
+
+		stud_sort.remove_if(listo_salyga);
 
 		auto end3 = std::chrono::high_resolution_clock::now();
 
@@ -136,11 +144,8 @@ void testas_list(std::string failo_pav, int irasu_sk, int testas)
 
 		//Rasymas i faila galvociu
 		auto start5 = std::chrono::high_resolution_clock::now();
-
-		rasymas_i_faila_galvociai(gal, "galvociai.txt");
-
+		rasymas_i_faila_galvociai(stud_sort, "galvociai.txt");
 		auto end5 = std::chrono::high_resolution_clock::now();
-
 
 		std::chrono::duration<double> diff4 = end5 - start5;
 
@@ -148,6 +153,7 @@ void testas_list(std::string failo_pav, int irasu_sk, int testas)
 
 		auto endas = std::chrono::high_resolution_clock::now();
 
+		// Suskaiciuojamas bendras testo laikas
 		std::chrono::duration<double> diff5 = endas - startas;
 
 		std::cout << "Failo is " << irasu_sk << " Testo nr " << testas << " rezultatas " << diff5.count() << " s\n";
@@ -157,13 +163,10 @@ void testas_list(std::string failo_pav, int irasu_sk, int testas)
 		nus.clear();
 
 		std::list<nuskriaustieji>().swap(nus);
-		gal.clear();
-		std::list<galvociai>().swap(gal);
 		studentai.clear();
 		std::list<studentas>().swap(studentai);
 		stud_sort.clear();
 		std::list<studentas_sort>().swap(stud_sort);
-
 	}
 }
 
@@ -172,7 +175,6 @@ bool isNumber(std::string s)
 	for (int i = 0; i < s.length(); i++)
 		if (isdigit(s[i]) == false)
 			return false;
-
 	return true;
 }
 

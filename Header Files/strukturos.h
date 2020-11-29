@@ -26,8 +26,6 @@ struct studentas
     std::list<int> iverciai;
 };
 
-//STRUKTURA UZDUOCIAI V0.2 VERSIJAI
-
 struct studentas_sort
 {
     std::string vardai;
@@ -37,13 +35,6 @@ struct studentas_sort
 };
 
 struct nuskriaustieji
-{
-    std::string vardai;
-    std::string pavardes;
-    double iverciai;
-};
-
-struct galvociai
 {
     std::string vardai;
     std::string pavardes;

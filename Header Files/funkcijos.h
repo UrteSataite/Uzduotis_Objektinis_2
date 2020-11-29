@@ -3,13 +3,13 @@
 
 #include "strukturos.h"
 
-double gal_mediana(int egr, std::list<int> nd_rez);
+double medianos_skaiciavimas(int egr, std::list<int> nd_rez);
 
-double gal_rez(int egr, std::list<int> nd_rez);
+double balo_skaiciavimas(int egr, std::list<int> nd_rez);
 
-std::list<double> vid_skaiciavimas(std::list<studentas> studentai);
+std::list<double> vidurkiai_funkcija(std::list<studentas> studentai);
 
-std::list<double> med_skaiciavimas(std::list<studentas> studentai);
+std::list<double> medianos_funkcija(std::list<studentas> studentai);
 
 void testas_list(std::string failo_pav, int irasu_sk, int testas);
 
