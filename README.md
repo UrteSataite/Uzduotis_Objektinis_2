@@ -10,7 +10,7 @@ Programos spartos testai atliekami naudojant **std::vector konteinerį** ir **v1
 
 Prieš pakeičiant Studnetas struktūra į Studentas klasę, buvo atlikti pakeitimai v1.0 kode: prieš tai buvusios 2 atskiros Studentas ir Studentas_sort struktūros pertvarkytos į vieną Studentas struktūrą. Todėl iš naujo alikti programos veikimo sportos testai. **Gauti tokie rezultatai**:
 
-<img src = "images/struktura.PNG" width=500> 
+<img src = "images/stuktura.PNG" width=500> 
 
 **Programos veikimo spartos testo rezultatai, pakeitus struktūrą į klasę:**
 
