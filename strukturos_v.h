@@ -18,15 +18,6 @@
 #include <random>
 #include <chrono>
 
-struct vec_studentas
-{
-    std::string vec_vardai;
-    std::string vec_pavardes;
-    std::vector<int> vec_iverciai;
-    double vec_galutiniai_vidurkiai;
-    double vec_galutiniai_medianos;
-};
-
 struct vec_nuskriaustieji
 {
     std::string vec_vardai;

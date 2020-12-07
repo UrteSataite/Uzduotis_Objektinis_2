@@ -8,6 +8,8 @@
 
 #include "failu_generavimas.h"
 
+#include "Studentas.h"
+
 int main()
 {
 	//Generuojami failai
