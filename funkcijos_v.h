@@ -15,6 +15,6 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas);
 
 bool vec_isNumber(std::string s);
 
-bool vec_compareAVG(vec_studentas_sort& a, vec_studentas_sort& b);
+bool vec_compareAVG(vec_studentas& a, vec_studentas& b);
 
 #endif

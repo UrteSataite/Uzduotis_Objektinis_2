@@ -58,7 +58,7 @@ std::vector<vec_studentas> vec_failo_nuskaitymas(std::string failo_pav, std::ifs
 				std::vector<std::string>().swap(visi_rezultatai);
 			}
 		}
-		vec_studentai.push_back(vec_studentas{ vardas, pavarde, patikrinti });
+		vec_studentai.push_back(vec_studentas{ vardas, pavarde, patikrinti,0,0 });
 		patikrinti.clear();
 		std::vector<int>().swap(patikrinti);
 	}
@@ -67,7 +67,7 @@ std::vector<vec_studentas> vec_failo_nuskaitymas(std::string failo_pav, std::ifs
 	return vec_studentai;
 }
 
-// Duomenu rasymas i faila nuskriaustieji.txt 
+// Duomenu rasymas i faila nuskriaustieji.txt
 void vec_rasymas_i_faila_nuskriaustieji(std::vector<vec_nuskriaustieji> nus, std::string failo_pav)
 {
 	std::ofstream myfile;
@@ -88,8 +88,8 @@ void vec_rasymas_i_faila_nuskriaustieji(std::vector<vec_nuskriaustieji> nus, std
 
 }
 
-// Duomenu rasymas i faila galvociai.txt 
-void vec_rasymas_i_faila_galvociai(std::vector<vec_studentas_sort> gal, std::string failo_pav)
+// Duomenu rasymas i faila galvociai.txt
+void vec_rasymas_i_faila_galvociai(std::vector<vec_studentas> gal, std::string failo_pav)
 {
 	std::ofstream myfile;
 	myfile.open(failo_pav);
@@ -104,7 +104,7 @@ void vec_rasymas_i_faila_galvociai(std::vector<vec_studentas_sort> gal, std::str
 
 	for (int i = 0; i < gal.size(); i++)
 	{
-		myfile << gal[i].vec_vardai << std::setw(25) << gal[i].vec_pavardes << std::setw(25) << gal[i].vec_vidurkiai << "\n";
+		myfile << gal[i].vec_vardai << std::setw(25) << gal[i].vec_pavardes << std::setw(25) << gal[i].vec_galutiniai_vidurkiai << "\n";
 	}
 
 }

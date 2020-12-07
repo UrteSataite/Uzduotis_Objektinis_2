@@ -14,24 +14,17 @@
 #include <cstring>
 #include <fstream>
 #include <cstdio>
-#include <sstream> 
+#include <sstream>
 #include <random>
 #include <chrono>
-
 
 struct vec_studentas
 {
     std::string vec_vardai;
     std::string vec_pavardes;
     std::vector<int> vec_iverciai;
-};
-
-struct vec_studentas_sort
-{
-    std::string vec_vardai;
-    std::string vec_pavardes;
-    double vec_vidurkiai;
-    double vec_medianos;
+    double vec_galutiniai_vidurkiai;
+    double vec_galutiniai_medianos;
 };
 
 struct vec_nuskriaustieji

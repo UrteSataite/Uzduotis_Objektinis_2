@@ -3,9 +3,9 @@
 #include "outputai_v.h"
 
 // 2 stratedijos igyvendinimo dalis. Funkcija grazina tuos vektoriaus elementus, kuriu vidurkis mazesnis nei 5
-bool tryntimo_salyga(const vec_studentas_sort& vector)
+bool tryntimo_salyga(const vec_studentas& vector)
 {
-	return vector.vec_vidurkiai < 5;
+	return vector.vec_galutiniai_vidurkiai < 5;
 }
 
 // Funkcija, skaiciuojanti galutines medianos reiksmes
@@ -53,7 +53,7 @@ std::vector<double> vec_vidurkiai_funkcija(std::vector<vec_studentas> studentai)
 	return vec_vidurkiai;
 }
 
-// Funckija, irasanti medianos reiksmes studentams 
+// Funckija, irasanti medianos reiksmes studentams
 std::vector<double> vec_medianos_funkcija(std::vector<vec_studentas> studentai)
 {
 	std::vector<double> vec_medianos;
@@ -68,9 +68,7 @@ std::vector<double> vec_medianos_funkcija(std::vector<vec_studentas> studentai)
 // Programos testavimo funkcija
 void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 {
-	std::vector<vec_studentas_sort> vec_stud_sort;
-
-	// Patikrinimas, ar egzistuoja norimas testuoti failas. 
+	// Patikrinimas, ar egzistuoja norimas testuoti failas.
 	std::ifstream infile(failo_pav);
 	if (infile.fail()) {
 		std::cout << "KLAIDA: failas tokiu pavadinimu neegzistuoja! \n" << std::endl;
@@ -92,16 +90,22 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
 		std::cout << "Failo is " << irasu_sk << " irasu nuskaitymas laikas " << diff.count() << " s\n";
 
-		// Duomenu surasymas i vec_stud_sort vektoriu
 		for (int i = 1; i < vec_studentai.size(); i++)
 		{
-			vec_stud_sort.push_back(vec_studentas_sort{ vec_studentai[i].vec_vardai, vec_studentai[i].vec_pavardes, vec_balo_skaiciavimas(vec_studentai[i].vec_iverciai.back(), vec_studentai[i].vec_iverciai) ,  vec_medianos_skaiciavimas(vec_studentai[i].vec_iverciai.back(), vec_studentai[i].vec_iverciai) });
-		}
+		    if(vec_studentai[i].vec_galutiniai_vidurkiai == 0)
+            {
+                vec_studentai[i].vec_galutiniai_vidurkiai = vec_balo_skaiciavimas(vec_studentai[i].vec_iverciai.back(), vec_studentai[i].vec_iverciai);
+            }
+            if(vec_studentai[i].vec_galutiniai_medianos == 0)
+            {
+                vec_studentai[i].vec_galutiniai_medianos = vec_medianos_skaiciavimas(vec_studentai[i].vec_iverciai.back(), vec_studentai[i].vec_iverciai);
+            }
+        }
 
 		//Issrusiuojama didejimo tvarka
 		auto start2 = std::chrono::high_resolution_clock::now();
 
-		std::sort(vec_stud_sort.begin(), vec_stud_sort.end(), vec_compareAVG);
+		std::sort(vec_studentai.begin(), vec_studentai.end(), vec_compareAVG);
 
 		auto end2 = std::chrono::high_resolution_clock::now();
 
@@ -109,19 +113,19 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
 		std::cout << "Failo is " << irasu_sk << " irasu isrusiavimo didejimo tvarka laikas " << diff1.count() << " s\n";
 
-		//Suskirstoma dvi grupes: i nuskriaustuosius ir galvocius. Nuskriaustieji perkeliami i kita vektoriu, istrinami is vec_stud_sort
+		//Suskirstoma dvi grupes: i nuskriaustuosius ir galvocius. Nuskriaustieji perkeliami i kita vektoriu, istrinami is studentai vektoriaus
 		std::vector<vec_nuskriaustieji> vec_nus;
 
 		auto start3 = std::chrono::high_resolution_clock::now();
 
-		for (auto& it : vec_stud_sort) {
-			if (it.vec_vidurkiai < 5)
+		for (auto& it : vec_studentai) {
+			if (it.vec_galutiniai_vidurkiai < 5)
 			{
-				vec_nus.push_back(vec_nuskriaustieji{ it.vec_vardai, it.vec_pavardes, it.vec_vidurkiai });
+				vec_nus.push_back(vec_nuskriaustieji{ it.vec_vardai, it.vec_pavardes, it.vec_galutiniai_vidurkiai });
 			}
 		}
-		
-		vec_stud_sort.erase(std::remove_if(vec_stud_sort.begin(), vec_stud_sort.end(), tryntimo_salyga), vec_stud_sort.end());
+
+		vec_studentai.erase(std::remove_if(vec_studentai.begin(), vec_studentai.end(), tryntimo_salyga), vec_studentai.end());
 
 		auto end3 = std::chrono::high_resolution_clock::now();
 
@@ -140,7 +144,7 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
 		////Rasymas i faila galvociu
 		auto start5 = std::chrono::high_resolution_clock::now();
-		vec_rasymas_i_faila_galvociai(vec_stud_sort, "galvociai.txt");
+		vec_rasymas_i_faila_galvociai(vec_studentai, "galvociai.txt");
 		auto end5 = std::chrono::high_resolution_clock::now();
 
 		std::chrono::duration<double> diff4 = end5 - start5;
@@ -160,8 +164,6 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 		std::vector<vec_nuskriaustieji>().swap(vec_nus);
 		vec_studentai.clear();
 		std::vector<vec_studentas>().swap(vec_studentai);
-		vec_stud_sort.clear();
-		std::vector<vec_studentas_sort>().swap(vec_stud_sort);
 	}
 
 }
@@ -176,5 +178,5 @@ bool vec_isNumber(std::string s)
 }
 
 // Funkcijos, reikalingos sort veikimui. Palyginami vidurkiai.
-bool vec_compareAVG(vec_studentas_sort& a, vec_studentas_sort& b) { return a.vec_vidurkiai < b.vec_vidurkiai; };
+bool vec_compareAVG(vec_studentas& a, vec_studentas& b) { return a.vec_galutiniai_vidurkiai < b.vec_galutiniai_vidurkiai; };
 
