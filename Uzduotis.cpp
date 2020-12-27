@@ -1,0 +1,26 @@
+
+#include "funkcijos_v.h"
+#include "outputai_v.h"
+#include "strukturos_v.h"
+
+#include "Studentas.h"
+
+// Pasalintas failu generavimas, t.y. susije failai failu_geeravimas.h ir failu_generavivmas.cpp
+
+// Programa realizuojama naudojant 2 klases (bazine zmogaus klase ir studento klase) bei std::vector konteineri.
+// Pasalinti failai,kuriuose realizuota programa naudojant strukturas bei std::list tipo konteineri.
+
+int main()
+{
+    std::cout<<"Programa realizuota naudojant klases bei std::vector konteineri." << std::endl;
+    std::cout<<""<<std::endl;
+    std::cout<<"Atliekami programos spartos testai: " << std::endl;
+    std::cout<<""<<std::endl;
+
+//      vec_testas("stud1000.txt", 1000, 1);
+//		vec_testas("stud10000.txt", 10000, 2);
+        vec_testas("stud100000.txt", 100000, 3);
+		vec_testas("stud1000000.txt", 1000000, 4);
+//		vec_testas("stud10000000.txt", 10000000, 5);
+
+}
