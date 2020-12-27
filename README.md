@@ -7,6 +7,7 @@
 *Pastaba: visos nuotraukos, naudojamos šiame faile, yra repozitorijoje esančiame aplanke "images".*
 
 ## [v1.1] (https://github.com/UrteSataite/Uzduotis_Objektinis_2/releases/tag/v1.1)
+<<<<<<< HEAD
 
 *Nuo v1.1 vietoje Visual Studio pradėtas naudoti CodeBlocks.*
 
@@ -34,6 +35,35 @@ Toliau matomi rezultatai, atlikus programos spartos testus, pakeitus kompiliator
 
 <img src = "images/o3.PNG" width=500> 
 
+=======
+
+*Nuo v1.1 vietoje Visual Studio pradėtas naudoti CodeBlocks.*
+
+Programos spartos testai atliekami naudojant **std::vector konteinerį** ir **v1.0 versijoje realizuotą 2 strategiją**.
+
+Prieš pakeičiant Studnetas struktūra į Studentas klasę, buvo atlikti pakeitimai v1.0 kode: prieš tai buvusios 2 atskiros Studentas ir Studentas_sort struktūros pertvarkytos į vieną Studentas struktūrą. Todėl iš naujo alikti programos veikimo sportos testai. **Gauti tokie rezultatai**:
+
+<img src = "images/stuktura.PNG" width=500> 
+
+**Programos veikimo spartos testo rezultatai, pakeitus struktūrą į klasę:**
+
+<img src = "images/klase.PNG" width=500> 
+
+Toliau matomi rezultatai, atlikus programos spartos testus, pakeitus kompiliatoriaus optimizavimo lygį, nurodomą per flag'us: O1, O2, O3:
+
+**Naudojant O1 (Optimize more(for speed)):**
+
+<img src = "images/O1.PNG" width=500> 
+
+**Naudojant O2 (Optimize even more (for speed))**
+
+<img src = "images/O2.PNG" width=500> 
+
+**Naudojant O3 (Optimize fully (for speed))**
+
+<img src = "images/o3.PNG" width=500> 
+
+>>>>>>> 99187d64798e205631164bc50fac0eacf9c66d24
 **Išvados:**
 - Greičiausiai nuskaitytas 100 tūkst. duomenų failas, naudojant O2 (O2 ir O3 skirtumas ~ 0.02s).
 - Greičiausiai nuskaitytas 1 mln. duomenų failas, naudojant O3 (O3 ir O1 skirtumas ~ 0.05s).
