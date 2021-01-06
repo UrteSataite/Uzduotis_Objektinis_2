@@ -18,6 +18,9 @@
 #include <random>
 #include <chrono>
 
+/**
+ * Struktura nuskriaustuju duomenims talpinti.
+ */
 struct vec_nuskriaustieji
 {
     std::string vec_vardai;

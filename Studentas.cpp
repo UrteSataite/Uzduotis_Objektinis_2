@@ -1,11 +1,17 @@
 #include "Studentas.h"
 
+/**
+ * Konstruktoriaus realizacija
+ */
 Studentas::Studentas(std::string v, std::string p, std::vector<int> i, double vid, double med) : BazineKlase(v, p, i)
 {
     vec_galutiniai_vidurkiai = vid;
     vec_galutiniai_medianos = med;
 }
 
+/**
+ * Operator=
+ */
 Studentas& Studentas::operator=(const Studentas& st)
 {
     BazineKlase::operator=(st);
@@ -14,19 +20,25 @@ Studentas& Studentas::operator=(const Studentas& st)
     return *this;
 }
 
-// Funkcijos, reikalingos sort veikimui. Palyginami vidurkiai.
+/**
+ * Funkcija, reikalinga sort veikimui. Palyginami studento vidurkiai.
+ */
 bool vec_compareAVG(Studentas& a, Studentas& b)
 {
     return a.getVec_galutiniai_vidurkiai() < b.getVec_galutiniai_vidurkiai();
 };
 
-// Trynimo is vektoriaus studentai salyga
+/**
+ * Trynimo is vektoriaus 'studentai' salyga.
+ */
 bool tryntimo_salyga(Studentas& vector)
 {
     return vector.getVec_galutiniai_vidurkiai() < 5;
 }
 
-// Duomenu is failo skaitymo patikrinimas
+/**
+ * Duomenu is failo skaitymo patikrinimas.
+ */
 bool vec_isNumber(std::string s)
 {
     for (int i = 0; i < s.length(); i++)
@@ -36,7 +48,9 @@ bool vec_isNumber(std::string s)
     return true;
 }
 
-// Funkcija, nuskaitanti duomenis is failo
+/**
+ * Funkcija nuskaitanti duomenis is .txt failo.
+ */
 std::vector<Studentas> vec_failo_nuskaitymas(std::string failo_pav, std::ifstream& infile)
 {
     std::vector<Studentas> vec_studentai;
@@ -50,7 +64,9 @@ std::vector<Studentas> vec_failo_nuskaitymas(std::string failo_pav, std::ifstrea
 
     infile.open(failo_pav);
 
-    // while ciklas skirtas suzinoti, kiek failas turi eiluciu ir stulpeliu
+    /**
+     * While ciklas skirtas suzinoti, kiek failas turi eiluciu ir stulpeliu.
+     */
     while (std::getline(infile, eilute))
     {
         rows++;
@@ -69,7 +85,9 @@ std::vector<Studentas> vec_failo_nuskaitymas(std::string failo_pav, std::ifstrea
 
     std::getline(infile, eilute);
 
-    // nuskaitoma likusi dokumento dalis (be etikeciu, tik duomenys)
+    /**
+     * Nuskaitoma likusi dokumento dalis (be etikeciu, tik duomenys).
+     */
     for (int i = 1; i < rows; i++)
     {
         infile >> vardas >> pavarde;
@@ -116,7 +134,9 @@ std::vector<Studentas> vec_failo_nuskaitymas(std::string failo_pav, std::ifstrea
     std::cout << vec_studentai.size();
 }
 
-// Funkcija, skaiciuojanti galutines medianos reiksmes
+/**
+ * Funkcija skaiciuojanti galutines medianos reiksmes.
+ */
 double vec_medianos_skaiciavimas(int egr, std::vector<int> nd_rez)
 {
     std::vector<double> eilute;
@@ -139,7 +159,9 @@ double vec_medianos_skaiciavimas(int egr, std::vector<int> nd_rez)
     }
 }
 
-// Funkcija, skaiciuojanti vidurki ir galutini bala
+/**
+ * Funkcija skaiciuojanti vidurki ir galutini bala.
+ */
 double vec_balo_skaiciavimas(int egr, std::vector<int> nd_rez)
 {
     double vidurkis, galutinis1;
@@ -150,7 +172,9 @@ double vec_balo_skaiciavimas(int egr, std::vector<int> nd_rez)
     return galutinis1;
 }
 
-// Funckija, irasanti vidurkiu reiksmes studentams
+/**
+ * Funckija irasanti vidurkiu reiksmes studentams.
+ */
 std::vector<double> vec_vidurkiai_funkcija(std::vector<Studentas>& studentai)
 {
 
@@ -163,7 +187,9 @@ std::vector<double> vec_vidurkiai_funkcija(std::vector<Studentas>& studentai)
     return vec_vidurkiai;
 }
 
-// Funckija, irasanti medianos reiksmes studentams
+/**
+ * Funckija irasanti medianos reiksmes studentams.
+ */
 std::vector<double> vec_medianos_funkcija(std::vector<Studentas> studentai)
 {
     std::vector<double> vec_medianos;

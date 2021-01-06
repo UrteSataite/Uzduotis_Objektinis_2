@@ -4,6 +4,11 @@
 #include "strukturos_v.h"
 #include "BazineKlase.h"
 
+/**
+ * \class Studentas
+ * \brief Studentas klase, kuri paveldi klase BazineKlase
+ */
+
 class Studentas: public BazineKlase
 {
 

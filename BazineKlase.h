@@ -3,6 +3,11 @@
 
 #include "strukturos_v.h"
 
+/**
+ * \class BazineKlase
+ * \brief Bazine abstrakcioji klase. Sios klases objektai nekuriami. 
+ */
+
 class BazineKlase
 {
 

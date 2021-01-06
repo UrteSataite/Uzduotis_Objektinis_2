@@ -4,11 +4,14 @@
 
 #include "Studentas.h"
 
-
-// Programos testavimo funkcija
+/**
+ * Programos testavimo funkcija.
+ */
 void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 {
-    // Patikrinimas, ar egzistuoja norimas testuoti failas.
+    /**
+     * Patikrinama ar egzistuoja norimas testuoti failas.
+     */
     std::ifstream infile(failo_pav);
     if (infile.fail())
     {
@@ -21,7 +24,9 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
         auto startas = std::chrono::high_resolution_clock::now();
 
-        // Failo nuskaitymas
+        /**
+         * Failo nuskaitymas.
+         */
         auto start1 = std::chrono::high_resolution_clock::now();
 
         std::vector<Studentas> vec_studentai = vec_failo_nuskaitymas(failo_pav, infile);
@@ -45,7 +50,9 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
             }
         }
 
-        //Issrusiuojama didejimo tvarka
+         /**
+         * Isrusiuojama didejimo tvarka.
+         */
         auto start2 = std::chrono::high_resolution_clock::now();
 
         std::sort(vec_studentai.begin(), vec_studentai.end(), vec_compareAVG);
@@ -56,7 +63,9 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
         std::cout << "Failo is " << irasu_sk << " irasu isrusiavimo didejimo tvarka laikas " << diff1.count() << " s\n";
 
-        //Suskirstoma dvi grupes: i nuskriaustuosius ir galvocius. Nuskriaustieji perkeliami i kita vektoriu, istrinami is studentai vektoriaus
+         /**
+         * Suskirstoma i dvi grupes: i nuskriaustuosius ir galvocius. Nuskriaustieji perkeliami i kita vektoriu, istrinami is studentai vektoriaus.
+         */
         std::vector<vec_nuskriaustieji> vec_nus;
 
         auto start3 = std::chrono::high_resolution_clock::now();
@@ -77,7 +86,9 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
         std::cout << "Failo is " << irasu_sk << " irasu padalijimo i dvi grupes laikas " << diff2.count() << " s\n";
 
-        //Rasymas i faila nuskriaustuju
+         /**
+         * Rasymas i faila nuskriaustieji.txt
+         */
         auto start4 = std::chrono::high_resolution_clock::now();
         vec_rasymas_i_faila_nuskriaustieji(vec_nus, "nuskriaustieji.txt");
         auto end4 = std::chrono::high_resolution_clock::now();
@@ -86,7 +97,9 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
         std::cout << "Failo is " << irasu_sk << " Nuskriaustuju irasymo laikas " << diff3.count() << " s\n";
 
-        ////Rasymas i faila galvociu
+         /**
+         * Rasymas i faila galvociai.txt
+         */
         auto start5 = std::chrono::high_resolution_clock::now();
         vec_rasymas_i_faila_galvociai(vec_studentai, "galvociai.txt");
         auto end5 = std::chrono::high_resolution_clock::now();
@@ -97,7 +110,9 @@ void vec_testas(std::string failo_pav, int irasu_sk, int testas)
 
         auto endas = std::chrono::high_resolution_clock::now();
 
-        // Suskaiciuojamas bendras testo laikas
+         /**
+         * Skaiciuojamas bendras testo laikas.
+         */
         std::chrono::duration<double> diff5 = endas - startas;
 
         std::cout << "Failo is " << irasu_sk << " Testo nr " << testas << " rezultatas " << diff5.count() << " s\n";

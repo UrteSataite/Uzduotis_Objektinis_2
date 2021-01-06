@@ -1,5 +1,8 @@
 #include "BazineKlase.h"
 
+ /**
+  * Konstruktorius
+  */
 BazineKlase::BazineKlase(std::string v, std::string p, std::vector<int> i)
 {
     vec_vardai = v;
@@ -7,8 +10,14 @@ BazineKlase::BazineKlase(std::string v, std::string p, std::vector<int> i)
     vec_iverciai = i;
 }
 
+ /**
+  * Destruktorius
+  */
 BazineKlase::~BazineKlase() {}
 
+ /**
+  * Operator=
+  */
 BazineKlase& BazineKlase::operator=(const BazineKlase& bk)
 {
     vec_vardai = bk.vec_vardai;

@@ -3,7 +3,9 @@
 #include "strukturos_v.h"
 #include "Studentas.h"
 
-// Duomenu rasymas i faila nuskriaustieji.txt
+/**
+ * Duomenu rasymas i faila nuskriaustieji.txt
+ */
 void vec_rasymas_i_faila_nuskriaustieji(std::vector<vec_nuskriaustieji> nus, std::string failo_pav)
 {
 	std::ofstream myfile;
@@ -23,7 +25,9 @@ void vec_rasymas_i_faila_nuskriaustieji(std::vector<vec_nuskriaustieji> nus, std
 
 }
 
-// Duomenu rasymas i faila galvociai.txt
+/**
+ * Duomenu rasymas i faila galvociai.txt
+ */
 void vec_rasymas_i_faila_galvociai(std::vector<Studentas> gal, std::string failo_pav)
 {
 	std::ofstream myfile;

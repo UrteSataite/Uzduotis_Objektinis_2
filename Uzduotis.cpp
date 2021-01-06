@@ -5,11 +5,6 @@
 
 #include "Studentas.h"
 
-// Pasalintas failu generavimas, t.y. susije failai failu_geeravimas.h ir failu_generavivmas.cpp
-
-// Programa realizuojama naudojant 2 klases (bazine zmogaus klase ir studento klase) bei std::vector konteineri.
-// Pasalinti failai,kuriuose realizuota programa naudojant strukturas bei std::list tipo konteineri.
-
 int main()
 {
     std::cout<<"Programa realizuota naudojant klases bei std::vector konteineri." << std::endl;
